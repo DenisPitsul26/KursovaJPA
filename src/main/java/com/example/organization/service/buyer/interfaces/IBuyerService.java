@@ -8,7 +8,7 @@ import java.util.List;
 public interface IBuyerService {
     public Buyer insertBuyer(Buyer buyer);
 
-    public Buyer getBuyer(int id);
+    public Buyer getBuyer(int id) throws SQLException;
 
     public Buyer updateBuyer(Buyer buyer) throws SQLException;
 

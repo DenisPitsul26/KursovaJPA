@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "trading_point")
 public class TradingPoint {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
     @JoinColumn(name = "type_of_trading_point_id")

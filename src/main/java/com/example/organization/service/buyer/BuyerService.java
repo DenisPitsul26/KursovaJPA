@@ -20,7 +20,7 @@ public class BuyerService implements IBuyerService{
     }
 
     @Override
-    public Buyer getBuyer(int id) {
+    public Buyer getBuyer(int id) throws SQLException{
         return buyerRepository.findById(id).get();
     }
 

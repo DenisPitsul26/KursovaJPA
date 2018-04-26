@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class TypeOfTradingPoint {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "type_of_type_of_trading_point")
     private String typeOfTypeOfTradingPoint;

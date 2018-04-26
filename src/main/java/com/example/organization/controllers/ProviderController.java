@@ -27,7 +27,7 @@ public class ProviderController {
     void deleteProvider(@RequestParam("id") int id) throws SQLException {
         providerService.deleteProvider(id);
     }
-    @GetMapping("/buyer/get")
+    @GetMapping("/provider/get")
     Provider getProviderById(@RequestParam("id") int id)throws SQLException
     {
         return providerService.getProvider(id);

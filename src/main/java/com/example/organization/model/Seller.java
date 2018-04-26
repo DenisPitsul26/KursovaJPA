@@ -1,11 +1,21 @@
 package com.example.organization.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "trading_point")
 public class Seller {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "type_of_trading_point_id")
     private TypeOfTradingPoint typeOfTradingPoint;
+    @ManyToOne
+    @JoinColumn(name = "trading_point_id")
     private TradingPoint tradingPoint;
+    @Column(name = "name_of_trading_point")
     private String nameOfSeller;
     private double sallary;
     private Date dateStarOfWork;

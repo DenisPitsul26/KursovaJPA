@@ -28,7 +28,7 @@ public class GoodsController {
     void deleteGoods(@RequestParam("id") int id) throws SQLException {
         goodsService.deleteGoods(id);
     }
-    @GetMapping("/buyer/get")
+    @GetMapping("/goods/get")
     Goods getGoodsById(@RequestParam("id") int id)throws SQLException
     {
         return goodsService.getGoods(id);

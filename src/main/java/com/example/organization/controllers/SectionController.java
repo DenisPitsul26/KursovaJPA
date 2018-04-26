@@ -27,7 +27,7 @@ public class SectionController {
     void deleteSection(@RequestParam("id") int id) throws SQLException {
         sectionService.deleteSection(id);
     }
-    @GetMapping("/buyer/get")
+    @GetMapping("/section/get")
     Section getSectionById(@RequestParam("id") int id)throws SQLException
     {
         return sectionService.getSection(id);
