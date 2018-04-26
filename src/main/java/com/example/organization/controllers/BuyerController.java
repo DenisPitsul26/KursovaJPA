@@ -32,6 +32,7 @@ public class BuyerController {
     {
         return buyerService.getBuyer(id);
     }
+
     @RequestMapping("/buyer/update")
     Buyer updateBuyer(
             @RequestBody Buyer buyer,
