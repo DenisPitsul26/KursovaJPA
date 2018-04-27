@@ -1,23 +1,37 @@
 package com.example.organization.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "sold_goods")
 public class SoldGoods {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "type_of_trading_point_id")
     private TypeOfTradingPoint typeOfTradingPoint;
+    @ManyToOne
+    @JoinColumn(name = "trading_point_id")
     private TradingPoint tradingPoint;
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
     private Seller seller;
+    @ManyToOne
+    @JoinColumn(name = "buyer_id")
     private Buyer buyer;
+    @ManyToOne
+    @JoinColumn(name = "goods_of_trading_point_id")
     private GoodsOfTradingPoint goodsOfTradingPoint;
+    @Column(name = "number_of_sold_goods")
     private int numberOfSoldGoods;
+    @Column(name = "date_of_sale")
     private Date dateOfSale;
+    @Column(name = "price")
     private double price;
 
-    public SoldGoods(int id, TypeOfTradingPoint typeOfTradingPoint,
-                     TradingPoint tradingPoint, Seller seller, Buyer buyer,
-                     GoodsOfTradingPoint goodsOfTradingPoint,
-                     int numberOfSoldGoods, Date dateOfSale, double price) {
-        this.id = id;
+    public SoldGoods(TypeOfTradingPoint typeOfTradingPoint, TradingPoint tradingPoint, Seller seller, Buyer buyer, GoodsOfTradingPoint goodsOfTradingPoint, int numberOfSoldGoods, Date dateOfSale, double price) {
         this.typeOfTradingPoint = typeOfTradingPoint;
         this.tradingPoint = tradingPoint;
         this.seller = seller;

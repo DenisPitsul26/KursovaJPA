@@ -12,12 +12,6 @@ public class TypeOfTradingPoint {
     @Column(name = "type_of_type_of_trading_point")
     private String typeOfTypeOfTradingPoint;
 
-//    public TypeOfTradingPoint(int id, String typeOfTypeOfTradingPoint) {
-//        this.id = id;
-//        this.typeOfTypeOfTradingPoint = typeOfTypeOfTradingPoint;
-//    }
-
-
     public TypeOfTradingPoint(String typeOfTypeOfTradingPoint) {
         this.typeOfTypeOfTradingPoint = typeOfTypeOfTradingPoint;
     }

@@ -1,6 +1,7 @@
 package com.example.organization.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,9 +21,9 @@ public class Seller {
     @Column(name = "sallary")
     private double sallary;
     @Column(name = "date_start_of_work")
-    private Date dateStarOfWork;
+    private LocalDate dateStarOfWork;
 
-    public Seller(TypeOfTradingPoint typeOfTradingPoint, TradingPoint tradingPoint, String nameOfSeller, double sallary, Date dateStarOfWork) {
+    public Seller(TypeOfTradingPoint typeOfTradingPoint, TradingPoint tradingPoint, String nameOfSeller, double sallary, LocalDate dateStarOfWork) {
         this.typeOfTradingPoint = typeOfTradingPoint;
         this.tradingPoint = tradingPoint;
         this.nameOfSeller = nameOfSeller;
@@ -73,11 +74,11 @@ public class Seller {
         this.sallary = sallary;
     }
 
-    public Date getDateStarOfWork() {
+    public LocalDate getDateStarOfWork() {
         return dateStarOfWork;
     }
 
-    public void setDateStarOfWork(Date dateStarOfWork) {
+    public void setDateStarOfWork(LocalDate dateStarOfWork) {
         this.dateStarOfWork = dateStarOfWork;
     }
 }

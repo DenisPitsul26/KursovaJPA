@@ -1,17 +1,28 @@
 package com.example.organization.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "goods_of_trading_point")
 public class GoodsOfTradingPoint {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "type_of_trading_point_id")
     private TypeOfTradingPoint typeOfTradingPoint;
+    @ManyToOne
+    @JoinColumn(name = "trading_point_id")
     private TradingPoint tradingPoint;
+    @ManyToOne
+    @JoinColumn(name = "goods_id")
     private Goods goods;
+    @Column(name = "price")
     private double price;
+    @Column(name = "number_of_goods")
     private int numberOfGoods;
 
-    public GoodsOfTradingPoint(int id, TypeOfTradingPoint typeOfTradingPoint,
-                               TradingPoint tradingPoint, Goods goods, double price,
-                               int numberOfGoods) {
-        this.id = id;
+    public GoodsOfTradingPoint(TypeOfTradingPoint typeOfTradingPoint, TradingPoint tradingPoint, Goods goods, double price, int numberOfGoods) {
         this.typeOfTradingPoint = typeOfTradingPoint;
         this.tradingPoint = tradingPoint;
         this.goods = goods;

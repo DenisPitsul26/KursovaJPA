@@ -1,22 +1,36 @@
 package com.example.organization.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "request")
 public class Request {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "number_request")
     private int numberRequest;
+    @ManyToOne
+    @JoinColumn(name = "type_of_trading_point_id")
     private TypeOfTradingPoint typeOfTradingPoint;
+    @ManyToOne
+    @JoinColumn(name = "trading_point_id")
     private TradingPoint tradingPoint;
+    @ManyToOne
+    @JoinColumn(name = "provider_id")
     private Provider provider;
+    @ManyToOne
+    @JoinColumn(name = "goods_id")
     private Goods goods;
+    @Column(name = "number_of_goods")
     private int numberOfGoods;
+    @Column(name = "price")
     private double price;
+    @Column(name = "date_of_request")
     private Date dateOfRequest;
 
-    public Request(int id, int numberRequest, TypeOfTradingPoint typeOfTradingPoint,
-                   TradingPoint tradingPoint, Provider provider, Goods goods,
-                   int numberOfGoods, double price, Date dateOfRequest) {
-        this.id = id;
+    public Request(int numberRequest, TypeOfTradingPoint typeOfTradingPoint, TradingPoint tradingPoint, Provider provider, Goods goods, int numberOfGoods, double price, Date dateOfRequest) {
         this.numberRequest = numberRequest;
         this.typeOfTradingPoint = typeOfTradingPoint;
         this.tradingPoint = tradingPoint;
