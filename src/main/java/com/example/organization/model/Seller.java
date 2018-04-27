@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "trading_point")
+@Table(name = "seller")
 public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +17,12 @@ public class Seller {
     private TradingPoint tradingPoint;
     @Column(name = "name_of_trading_point")
     private String nameOfSeller;
+    @Column(name = "sallary")
     private double sallary;
+    @Column(name = "date_start_of_work")
     private Date dateStarOfWork;
 
-    public Seller(int id, TypeOfTradingPoint typeOfTradingPoint,
-                  TradingPoint tradingPoint, String nameOfSeller, double sallary,
-                  Date dateStarOfWork) {
-        this.id = id;
+    public Seller(TypeOfTradingPoint typeOfTradingPoint, TradingPoint tradingPoint, String nameOfSeller, double sallary, Date dateStarOfWork) {
         this.typeOfTradingPoint = typeOfTradingPoint;
         this.tradingPoint = tradingPoint;
         this.nameOfSeller = nameOfSeller;

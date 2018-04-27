@@ -1,14 +1,23 @@
 package com.example.organization.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "sectionOfTradingPoint")
 public class SectionOfTradingPoint {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "trading_point_id")
     private TradingPoint tradingPoint;
+    @ManyToOne
+    @JoinColumn(name = "section_id")
     private Section section;
+    @Column(name = "number_of_halls")
     private int numberOfHalls;
 
-    public SectionOfTradingPoint(int id, TradingPoint tradingPoint,
-                                 Section section, int numberOfHalls) {
-        this.id = id;
+    public SectionOfTradingPoint(TradingPoint tradingPoint, Section section, int numberOfHalls) {
         this.tradingPoint = tradingPoint;
         this.section = section;
         this.numberOfHalls = numberOfHalls;

@@ -1,7 +1,7 @@
 package com.example.organization.controllers;
 
 import com.example.organization.model.TradingPoint;
-import com.example.organization.service.trading_point.TradingPointService;
+import com.example.organization.service.tradingPoint.TradingPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

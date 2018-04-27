@@ -1,8 +1,8 @@
-package com.example.organization.service.trading_point;
+package com.example.organization.service.tradingPoint;
 
 import com.example.organization.model.TradingPoint;
 import com.example.organization.repository.TradingPointRepository;
-import com.example.organization.service.trading_point.interfaces.ITradingPointSevice;
+import com.example.organization.service.tradingPoint.interfaces.ITradingPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Service
-public class TradingPointService implements ITradingPointSevice{
+public class TradingPointService implements ITradingPointService {
     @Autowired
     TradingPointRepository tradingPointRepository;
 

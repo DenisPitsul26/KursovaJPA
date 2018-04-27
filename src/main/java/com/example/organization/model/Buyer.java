@@ -3,6 +3,7 @@ package com.example.organization.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "buyer")
 public class Buyer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

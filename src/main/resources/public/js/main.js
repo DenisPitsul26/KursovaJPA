@@ -11,7 +11,7 @@ app.controller("AppCtrl", function ($scope, $http) {
         $scope.typeOfTradingPoint = response.data;
     });
     $scope.tradingPoint = [];
-    $http.get('/api/trading_point').then(function (response) {
+    $http.get('/api/tradingPoint').then(function (response) {
         $scope.tradingPoint = response.data;
     });
     $scope.provider = [];
@@ -27,7 +27,7 @@ app.controller("AppCtrl", function ($scope, $http) {
         $scope.section = response.data;
     });
     $scope.sectionOfTradingPoint = [];
-    $http.get('/api/section_of_trading_point').then(function (response) {
+    $http.get('/api/sectionOfTradingPoint').then(function (response) {
         $scope.sectionOfTradingPoint = response.data;
     });
     $scope.goodsOfTradingPoint = [];

@@ -1,11 +1,11 @@
-package com.example.organization.service.trading_point.interfaces;
+package com.example.organization.service.tradingPoint.interfaces;
 
 import com.example.organization.model.TradingPoint;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface ITradingPointSevice {
+public interface ITradingPointService {
     public TradingPoint insertTradingPoint(TradingPoint tradingPoint);
 
     public TradingPoint getTradingPoint(int id);

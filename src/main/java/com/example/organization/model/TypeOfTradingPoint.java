@@ -3,6 +3,7 @@ package com.example.organization.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "type_of_trading_point")
 public class TypeOfTradingPoint {
 
     @Id
