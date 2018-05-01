@@ -11,9 +11,12 @@ public class Provider {
     private int id;
     @Column(name = "name_of_provider")
     private String nameOfProvider;
+    @Column(name = "phone")
+    private String phone;
 
-    public Provider(String nameOfProvider) {
+    public Provider(String nameOfProvider, String phone) {
         this.nameOfProvider = nameOfProvider;
+        this.phone = phone;
     }
 
     public Provider() {
@@ -33,5 +36,13 @@ public class Provider {
 
     public void setNameOfProvider(String nameOfProvider) {
         this.nameOfProvider = nameOfProvider;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

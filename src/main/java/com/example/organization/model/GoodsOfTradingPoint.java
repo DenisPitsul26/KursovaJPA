@@ -9,9 +9,6 @@ public class GoodsOfTradingPoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
-    @JoinColumn(name = "type_of_trading_point_id")
-    private TypeOfTradingPoint typeOfTradingPoint;
-    @ManyToOne
     @JoinColumn(name = "trading_point_id")
     private TradingPoint tradingPoint;
     @ManyToOne
@@ -22,8 +19,7 @@ public class GoodsOfTradingPoint {
     @Column(name = "number_of_goods")
     private int numberOfGoods;
 
-    public GoodsOfTradingPoint(TypeOfTradingPoint typeOfTradingPoint, TradingPoint tradingPoint, Goods goods, double price, int numberOfGoods) {
-        this.typeOfTradingPoint = typeOfTradingPoint;
+    public GoodsOfTradingPoint(TradingPoint tradingPoint, Goods goods, double price, int numberOfGoods) {
         this.tradingPoint = tradingPoint;
         this.goods = goods;
         this.price = price;
@@ -39,14 +35,6 @@ public class GoodsOfTradingPoint {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public TypeOfTradingPoint getTypeOfTradingPoint() {
-        return typeOfTradingPoint;
-    }
-
-    public void setTypeOfTradingPoint(TypeOfTradingPoint typeOfTradingPoint) {
-        this.typeOfTradingPoint = typeOfTradingPoint;
     }
 
     public TradingPoint getTradingPoint() {

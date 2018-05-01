@@ -1,12 +1,12 @@
-var app = angular.module("section_of_trading_point", []);
+var app = angular.module("goods_of_trading_point", []);
 app.controller("AppCtrl", function ($scope, $http) {
 
-    $scope.sectionOfTradingPoint = [];
-    $http.get('/api/section_of_trading_point').then(function (response) {
-        $scope.sectionOfTradingPoint = response.data;
+    $scope.goodsOfTradingPoint = [];
+    $http.get('/api/goods_of_trading_point').then(function (response) {
+        $scope.goodsOfTradingPoint = response.data;
     });
 
-    this.startInsertSectionOfTradingPoint = function () {
+    this.startInsertGoodsOfTradingPoint = function () {
         $http.get('/api/trading_point').then(function (response) {
             var tradingPoint = response.data;
             var defaultOption = document.createElement("option");
@@ -24,57 +24,47 @@ app.controller("AppCtrl", function ($scope, $http) {
                 selector.add(option);
             }
         });
-        $http.get('/api/section').then(function (response) {
-            var section = response.data;
+        $http.get('/api/goods').then(function (response) {
+            var goods = response.data;
             var defaultOption = document.createElement("option");
             defaultOption.value="";
-            defaultOption.text = "Виберіть секцію";
+            defaultOption.text = "Виберіть товар";
             defaultOption.disabled = true;
             defaultOption.selected = true;
-            var selector = document.getElementById("section");
+            var selector = document.getElementById("goods");
             $(selector).empty();
             selector.add(defaultOption);
-            for (var i = 0; i < section.length; i++) {
+            for (var i = 0; i < goods.length; i++) {
                 var option = document.createElement("option");
-                option.text = section[i].typeOfSection;
-                option.value = section[i].id;
+                option.text = goods[i].nameOfGoods;
+                option.value = goods[i].id;
                 selector.add(option);
             }
         });
     };
 
-    this.insertSectionOfTradingPoint = function add() {
+    this.insertGoodsOfTradingPoint = function add() {
         var indexTradingPoint = document.getElementById("tradingPoint").selectedIndex;
         var tradingPointId = document.getElementById("tradingPoint").options[indexTradingPoint].value;
 
-        var indexSection = document.getElementById("section").selectedIndex;
-        var sectionId = document.getElementById("section").options[indexSection].value;
+        var indexGoods = document.getElementById("goods").selectedIndex;
+        var goodsId = document.getElementById("goods").options[indexGoods].value;
 
-        var numberOfHalls = document.getElementById("numberOfHalls").value;
+        var price = document.getElementById("price").value;
+        var numberOfGoods = document.getElementById("numberOfGoods").value;
 
-        /*var req = {
-            method: 'POST',
-            url: '/api/section_of_trading_point/insert',
-            data: {
-                tradingPoint: tradingPointId,
-                section: sectionId,
-                numberOfHalls: numberOfHalls
-            }
-        };
-        $http(req).then(function (resp) {
-            window.location.reload();
-        })*/
         $http.get('/api/trading_point/get?id='+tradingPointId).then(function (response) {
-            $http.get('/api/section/get?id='+sectionId).then(function (response1) {
+            $http.get('/api/goods/get?id='+goodsId).then(function (response1) {
                 var selectedTradingPoint = response.data;
-                var selectedSection = response1.data;
+                var selectedGoods = response1.data;
                 var req = {
                     method: 'POST',
-                    url: '/api/section_of_trading_point/insert',
+                    url: '/api/goods_of_trading_point/insert',
                     data: {
                         tradingPoint: selectedTradingPoint,
-                        section: selectedSection,
-                        numberOfHalls: numberOfHalls
+                        goods: selectedGoods,
+                        price: price,
+                        numberOfGoods: numberOfGoods
                     }
                 };
                 $http(req).then(function (resp) {
@@ -84,13 +74,13 @@ app.controller("AppCtrl", function ($scope, $http) {
         });
     };
 
-    this.deleteSectionOfTradingPoint = function del(id) {
-        $http.get("api/section_of_trading_point/delete?id="+id).then(function (response) {
+    this.deleteGoodsOfTradingPoint = function del(id) {
+        $http.get("api/goods_of_trading_point/delete?id="+id).then(function (response) {
             window.location.reload();
         });
     };
 
-    this.startUpdateSectionOfTradingPoint = function startUpdate(id, tradingPoint, section, numberOfHalls) {
+    this.startUpdateGoodsOfTradingPoint = function startUpdate(id, tradingPoint, goods, price, numberOfGoods) {
         $http.get('/api/trading_point').then(function (response) {
             var tradingPoints = response.data;
             var selector = document.getElementById("updateTradingPoint");
@@ -105,46 +95,49 @@ app.controller("AppCtrl", function ($scope, $http) {
                 selector.add(option);
             }
         });
-        $http.get('/api/section').then(function (response) {
-            var sections = response.data;
-            var selector = document.getElementById("updateSection");
+        $http.get('/api/goods').then(function (response) {
+            var goodss = response.data;
+            var selector = document.getElementById("updateGoods");
             $(selector).empty();
-            for (var i = 0; i < sections.length; i++) {
+            for (var i = 0; i < goodss.length; i++) {
                 var option = document.createElement("option");
-                if (sections[i].id == section.id){
+                if (goodss[i].id == goods.id){
                     option.selected = 'selected';
                 }
-                option.text = sections[i].typeOfSection;
-                option.value = sections[i].id;
+                option.text = goodss[i].nameOfGoods;
+                option.value = goodss[i].id;
                 selector.add(option);
             }
         });
         document.getElementById("updateId").innerText = id;
-        document.getElementById("updateNumberOfHalls").value = numberOfHalls;
+        document.getElementById("updatePrice").value = price;
+        document.getElementById("updateNumberOfGoods").value = numberOfGoods;
     };
 
-    this.updateSectionOfTradingPoint = function update() {
+    this.updateGoodsOfTradingPoint = function update() {
         var id = document.getElementById("updateId").innerText;
 
         var indexTradingPoint = document.getElementById("updateTradingPoint").selectedIndex;
         var tradingPointId = document.getElementById("updateTradingPoint").options[indexTradingPoint].value;
 
-        var indexSection = document.getElementById("updateSection").selectedIndex;
-        var sectionId = document.getElementById("updateSection").options[indexSection].value;
+        var indexGoods = document.getElementById("updateGoods").selectedIndex;
+        var goodsId = document.getElementById("updateGoods").options[indexGoods].value;
 
-        var numberOfHalls = document.getElementById("updateNumberOfHalls").value;
+        var price = document.getElementById("updatePrice").value;
+        var numberOfGoods = document.getElementById("updateNumberOfGoods").value;
 
         $http.get('/api/trading_point/get?id='+tradingPointId).then(function (response) {
-            $http.get('/api/section/get?id=' + sectionId).then(function (response1) {
+            $http.get('/api/goods/get?id=' + goodsId).then(function (response1) {
                 var selectedTradingPoint = response.data;
-                var selectedSection = response1.data;
+                var selectedGoods = response1.data;
                 var req = {
                     method: 'POST',
-                    url: 'api/section_of_trading_point/update?id=' + id,
+                    url: 'api/goods_of_trading_point/update?id=' + id,
                     data: {
                         tradingPoint: selectedTradingPoint,
-                        section: selectedSection,
-                        numberOfHalls: numberOfHalls
+                        goods: selectedGoods,
+                        price: price,
+                        numberOfGoods: numberOfGoods
                     }
                 };
                 $http(req).then(function (resp) {

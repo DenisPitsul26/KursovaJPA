@@ -8,11 +8,13 @@ app.controller("AppCtrl", function ($scope, $http) {
 
     this.insertProvider = function () {
         var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
         var req = {
             method: 'POST',
             url: '/api/provider/insert',
             data: {
-                nameOfProvider: name
+                nameOfProvider: name,
+                phone: phone
             }
         };
         console.log(req);
@@ -27,19 +29,22 @@ app.controller("AppCtrl", function ($scope, $http) {
         })
     }
 
-    this.startUpdate = function startUpdate(id, name) {
+    this.startUpdate = function startUpdate(id, name, phone) {
         document.getElementById("updateId").innerText = id;
         document.getElementById("updateName").value = name;
+        document.getElementById("updatePhone").value = phone;
     };
 
     this.updateProvider = function update() {
         var id = document.getElementById("updateId").innerText;
         var name = document.getElementById("updateName").value;
+        var phone = document.getElementById("updatePhone").value;
         var req = {
             method: 'POST',
             url: "/api/provider/update?id="+id,
             data: {
-                nameOfProvider: name
+                nameOfProvider: name,
+                phone: phone
             }
         };
         // console.log(req);

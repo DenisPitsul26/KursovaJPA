@@ -22,6 +22,7 @@
                                 <hr>
                                 <h4>Добавлення постачальника:</h4>
                                 <input class="form-control" type="text" name="name" id="name" placeholder="Ім'я постачальника"><br>
+                                <input class="form-control" type="text" name="phone" id="phone" placeholder="Номер телефону"><br>
                                 <button type="button" class="btn btn-primary" ng-click="ctrl.insertProvider()">Добавити</button>
                                 <br>
                             </div>
@@ -36,14 +37,16 @@
                     <tr>
                         <th>id</th>
                         <th>Ім'я постачальника</th>
+                        <th>Номер телефону</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in provider">
                             <td>{{item.id}}</td>
                             <td>{{item.nameOfProvider}}</td>
+                            <td>{{item.phone}}</td>
                             <td class="text-right">
-                                <button type="button" class="btn btn-warning" ng-click="ctrl.startUpdate(item.id,item.nameOfProvider)" data-toggle="collapse" data-target="#collapseThreeUpdate" aria-expanded="false" aria-controls="collapseThree" type="button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-warning" ng-click="ctrl.startUpdate(item.id,item.nameOfProvider,item.phone)" data-toggle="collapse" data-target="#collapseThreeUpdate" aria-expanded="false" aria-controls="collapseThree" type="button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                                 <button type="button" class="btn btn-danger" ng-click="ctrl.deleteProvider(item.id)"><i class="fa fa-remove"></i></button>
                             </td>
                         </tr>
@@ -57,6 +60,7 @@
                                 <h4>Оновлення постачальника:</h4>
                                 <h4> ID <div id="updateId"></div> </h4>
                                 <input class="form-control" type="text" name="name" id="updateName"><br>
+                                <input class="form-control" type="text" name="phone" id="updatePhone"><br>
                                 <button type="button" class="btn btn-primary" ng-click="ctrl.updateProvider()">Оновити</button>
                                 <br>
                             </div>
