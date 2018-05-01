@@ -1,6 +1,7 @@
 package com.example.organization.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -9,9 +10,6 @@ public class SoldGoods {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne
-    @JoinColumn(name = "type_of_trading_point_id")
-    private TypeOfTradingPoint typeOfTradingPoint;
     @ManyToOne
     @JoinColumn(name = "trading_point_id")
     private TradingPoint tradingPoint;
@@ -27,12 +25,11 @@ public class SoldGoods {
     @Column(name = "number_of_sold_goods")
     private int numberOfSoldGoods;
     @Column(name = "date_of_sale")
-    private Date dateOfSale;
+    private LocalDate dateOfSale;
     @Column(name = "price")
     private double price;
 
-    public SoldGoods(TypeOfTradingPoint typeOfTradingPoint, TradingPoint tradingPoint, Seller seller, Buyer buyer, GoodsOfTradingPoint goodsOfTradingPoint, int numberOfSoldGoods, Date dateOfSale, double price) {
-        this.typeOfTradingPoint = typeOfTradingPoint;
+    public SoldGoods(TradingPoint tradingPoint, Seller seller, Buyer buyer, GoodsOfTradingPoint goodsOfTradingPoint, int numberOfSoldGoods, LocalDate dateOfSale, double price) {
         this.tradingPoint = tradingPoint;
         this.seller = seller;
         this.buyer = buyer;
@@ -51,14 +48,6 @@ public class SoldGoods {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public TypeOfTradingPoint getTypeOfTradingPoint() {
-        return typeOfTradingPoint;
-    }
-
-    public void setTypeOfTradingPoint(TypeOfTradingPoint typeOfTradingPoint) {
-        this.typeOfTradingPoint = typeOfTradingPoint;
     }
 
     public TradingPoint getTradingPoint() {
@@ -101,11 +90,11 @@ public class SoldGoods {
         this.numberOfSoldGoods = numberOfSoldGoods;
     }
 
-    public Date getDateOfSale() {
+    public LocalDate getDateOfSale() {
         return dateOfSale;
     }
 
-    public void setDateOfSale(Date dateOfSale) {
+    public void setDateOfSale(LocalDate dateOfSale) {
         this.dateOfSale = dateOfSale;
     }
 

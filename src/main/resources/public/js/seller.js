@@ -69,6 +69,7 @@ app.controller("AppCtrl", function ($scope, $http) {
                     option.selected = 'selected';
                 }
                 option.text = tradingPoints[i].nameOfTradingPoint;
+                //option.text = tradingPoints[i].typeOfTradingPoint.typeOfTypeOfTradingPoint;
                 option.value = tradingPoints[i].id;
                 selector.add(option);
             }
