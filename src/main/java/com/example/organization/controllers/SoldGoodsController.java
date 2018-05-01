@@ -37,7 +37,7 @@ public class SoldGoodsController {
     }
 
     @RequestMapping("/sold_goods/update")
-    SoldGoods updateGoodsOfTradingPoint(@RequestBody SoldGoods soldGoods, @RequestParam("id") int id)throws SQLException
+    SoldGoods updateSoldGoods(@RequestBody SoldGoods soldGoods, @RequestParam("id") int id)throws SQLException
     {
         soldGoods.setId(id);
         return soldGoodsService.updateSoldGoods(soldGoods);

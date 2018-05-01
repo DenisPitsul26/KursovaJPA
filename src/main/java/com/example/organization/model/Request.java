@@ -1,6 +1,7 @@
 package com.example.organization.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -11,9 +12,6 @@ public class Request {
     private int id;
     @Column(name = "number_request")
     private int numberRequest;
-    @ManyToOne
-    @JoinColumn(name = "type_of_trading_point_id")
-    private TypeOfTradingPoint typeOfTradingPoint;
     @ManyToOne
     @JoinColumn(name = "trading_point_id")
     private TradingPoint tradingPoint;
@@ -28,11 +26,10 @@ public class Request {
     @Column(name = "price")
     private double price;
     @Column(name = "date_of_request")
-    private Date dateOfRequest;
+    private LocalDate dateOfRequest;
 
-    public Request(int numberRequest, TypeOfTradingPoint typeOfTradingPoint, TradingPoint tradingPoint, Provider provider, Goods goods, int numberOfGoods, double price, Date dateOfRequest) {
+    public Request(int numberRequest, TradingPoint tradingPoint, Provider provider, Goods goods, int numberOfGoods, double price, LocalDate dateOfRequest) {
         this.numberRequest = numberRequest;
-        this.typeOfTradingPoint = typeOfTradingPoint;
         this.tradingPoint = tradingPoint;
         this.provider = provider;
         this.goods = goods;
@@ -58,14 +55,6 @@ public class Request {
 
     public void setNumberRequest(int numberRequest) {
         this.numberRequest = numberRequest;
-    }
-
-    public TypeOfTradingPoint getTypeOfTradingPoint() {
-        return typeOfTradingPoint;
-    }
-
-    public void setTypeOfTradingPoint(TypeOfTradingPoint typeOfTradingPoint) {
-        this.typeOfTradingPoint = typeOfTradingPoint;
     }
 
     public TradingPoint getTradingPoint() {
@@ -108,11 +97,11 @@ public class Request {
         this.price = price;
     }
 
-    public Date getDateOfRequest() {
+    public LocalDate getDateOfRequest() {
         return dateOfRequest;
     }
 
-    public void setDateOfRequest(Date dateOfRequest) {
+    public void setDateOfRequest(LocalDate dateOfRequest) {
         this.dateOfRequest = dateOfRequest;
     }
 }
