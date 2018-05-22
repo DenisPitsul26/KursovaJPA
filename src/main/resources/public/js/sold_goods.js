@@ -2,7 +2,12 @@ var app = angular.module("sold_goods", []);
 app.controller("AppCtrl", function ($scope, $http) {
 
     $scope.soldGoods = [];
+    var time = performance.now();
     $http.get('/api/sold_goods').then(function (response) {
+        time = performance.now() - time;
+        time = Math.round(time*100)/100;
+        console.log('Час доступу до бази = ', time+" мс");
+        //alert("--------");
         $scope.soldGoods = response.data;
     });
 
@@ -35,10 +40,10 @@ app.controller("AppCtrl", function ($scope, $http) {
                 $(selector).empty();
                 selector.add(defaultOption);
                 for (var i = 0; i < seller.length; i++) {
-                    var option = document.createElement("option");
-                    option.text = seller[i].nameOfSeller;
-                    option.value = seller[i].id;
-                    selector.add(option);
+                        var option = document.createElement("option");
+                        option.text = seller[i].nameOfSeller;
+                        option.value = seller[i].id;
+                        selector.add(option);
                 }
         });
         /*var indexTradingPoint = document.getElementById("tradingPoint").selectedIndex;
@@ -140,7 +145,11 @@ app.controller("AppCtrl", function ($scope, $http) {
                                 price: price
                             }
                         };
+                        var time = performance.now();
                         $http(req).then(function (resp) {
+                            time = performance.now() - time;
+                            console.log("Время выполнения = ", time);
+                            alert("--------");
                             window.location.reload();
                         })
                     });
@@ -154,6 +163,7 @@ app.controller("AppCtrl", function ($scope, $http) {
             window.location.reload();
         });
     };
+    
 
     this.startUpdateSoldGoods = function startUpdate(id, tradingPoint, seller, buyer, goodsOfTradingPoint, numberOfSoldGoods, dateOfSale, price) {
         $http.get('/api/trading_point').then(function (response) {

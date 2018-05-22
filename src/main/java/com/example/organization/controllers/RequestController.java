@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -41,5 +42,10 @@ public class RequestController {
     {
         request.setId(id);
         return requestService.updateRequest(request);
+    }
+
+    @RequestMapping("/request/getProvidersByGoodsAndDateOfRequest")
+    public List<Request> getProvidersByGoodsAndDateOfRequest(@RequestParam("goods_id") int goodsId , @RequestParam("startTime") LocalDate startTime, @RequestParam("finishTime") LocalDate finishTime) throws SQLException {
+        return requestService.getProvidersByGoodsAndDateOfRequest(goodsId, startTime, finishTime);
     }
 }
