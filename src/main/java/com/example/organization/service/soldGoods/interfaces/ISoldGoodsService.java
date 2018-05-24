@@ -23,4 +23,8 @@ public interface ISoldGoodsService {
 
     double getNumberOfSoldGoodsByTypeOfTradingPointAndDateOfSale(int typeOfTradingPointId, LocalDate startTime, LocalDate finishTime) throws SQLException;
 
+    List<SoldGoods> getSoldGoodsByTradingPointAndGoodsAndDateOfSale(int tradingPointId, int goodsId, LocalDate startTime, LocalDate finishTime) throws SQLException;
+
+    List<SoldGoods> getSoldGoodsByGoodsAndDateOfSale(int goodsId, LocalDate startTime, LocalDate finishTime) throws SQLException;
+
 }

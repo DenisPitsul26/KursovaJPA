@@ -46,31 +46,6 @@ app.controller("AppCtrl", function ($scope, $http) {
                         selector.add(option);
                 }
         });
-        /*var indexTradingPoint = document.getElementById("tradingPoint").selectedIndex;
-        var tradingPointId = document.getElementById("tradingPoint").options[indexTradingPoint].value;
-
-        $http.get('/api/seller').then(function (response) {
-            $http.get('/api/trading_point/get?id='+tradingPointId).then(function (response1) {
-                var seller = response.data;
-                var selectedTradingPoint = response1.data;
-                var defaultOption = document.createElement("option");
-                defaultOption.value = "";
-                defaultOption.text = "Виберіть продавця";
-                defaultOption.disabled = true;
-                defaultOption.selected = true;
-                var selector = document.getElementById("seller");
-                $(selector).empty();
-                selector.add(defaultOption);
-                for (var i = 0; i < seller.length; i++) {
-                    if (selectedTradingPoint.id == seller[i].tradingPoint.id) {
-                        var option = document.createElement("option");
-                        option.text = seller[i].nameOfSeller;
-                        option.value = seller[i].id;
-                        selector.add(option);
-                    }
-                }
-            });
-        });*/
         $http.get('/api/buyer').then(function (response) {
             var buyer = response.data;
             var defaultOption = document.createElement("option");
@@ -99,10 +74,10 @@ app.controller("AppCtrl", function ($scope, $http) {
             $(selector).empty();
             selector.add(defaultOption);
             for (var i = 0; i < goodsOfTradingPoint.length; i++) {
-                var option = document.createElement("option");
-                option.text = goodsOfTradingPoint[i].goods.nameOfGoods;
-                option.value = goodsOfTradingPoint[i].id;
-                selector.add(option);
+                    var option = document.createElement("option");
+                    option.text = goodsOfTradingPoint[i].goods.nameOfGoods;
+                    option.value = goodsOfTradingPoint[i].id;
+                    selector.add(option);
             }
         });
     };
@@ -166,6 +141,8 @@ app.controller("AppCtrl", function ($scope, $http) {
     
 
     this.startUpdateSoldGoods = function startUpdate(id, tradingPoint, seller, buyer, goodsOfTradingPoint, numberOfSoldGoods, dateOfSale, price) {
+        $scope.selectedTradingPoint = tradingPoint;
+
         $http.get('/api/trading_point').then(function (response) {
             var tradingPoints = response.data;
             var selector = document.getElementById("updateTradingPoint");
@@ -185,13 +162,15 @@ app.controller("AppCtrl", function ($scope, $http) {
             var selector = document.getElementById("updateSeller");
             $(selector).empty();
             for (var i = 0; i < sellers.length; i++) {
-                var option = document.createElement("option");
-                if (sellers[i].id == seller.id){
-                    option.selected = 'selected';
+                if (sellers[i].tradingPoint.id == $scope.selectedTradingPoint.id) {
+                    var option = document.createElement("option");
+                    if (sellers[i].id == seller.id) {
+                        option.selected = 'selected';
+                    }
+                    option.text = sellers[i].nameOfSeller;
+                    option.value = sellers[i].id;
+                    selector.add(option);
                 }
-                option.text = sellers[i].nameOfSeller;
-                option.value = sellers[i].id;
-                selector.add(option);
             }
         });
         $http.get('/api/buyer').then(function (response) {
@@ -213,13 +192,15 @@ app.controller("AppCtrl", function ($scope, $http) {
             var selector = document.getElementById("updateGoodsOfTradingPoint");
             $(selector).empty();
             for (var i = 0; i < goodsOfTradingPoints.length; i++) {
-                var option = document.createElement("option");
-                if (goodsOfTradingPoints[i].id == goodsOfTradingPoint.id){
-                    option.selected = 'selected';
+                if (goodsOfTradingPoints[i].tradingPoint.id == $scope.selectedTradingPoint.id) {
+                    var option = document.createElement("option");
+                    if (goodsOfTradingPoints[i].id == goodsOfTradingPoint.id) {
+                        option.selected = 'selected';
+                    }
+                    option.text = goodsOfTradingPoints[i].goods.nameOfGoods;
+                    option.value = goodsOfTradingPoints[i].id;
+                    selector.add(option);
                 }
-                option.text = goodsOfTradingPoints[i].goods.nameOfGoods;
-                option.value = goodsOfTradingPoints[i].id;
-                selector.add(option);
             }
         });
         document.getElementById("updateId").innerText = id;
@@ -276,4 +257,105 @@ app.controller("AppCtrl", function ($scope, $http) {
             });
         });
     };
+
+    document.getElementById("tradingPoint").addEventListener("change", changeTradingPointInsert);
+    function changeTradingPointInsert() {
+        var indexTradingPoint= document.getElementById("tradingPoint").selectedIndex;
+        var tradingPointId= document.getElementById("tradingPoint").options[indexTradingPoint].value;
+
+        $http.get('/api/trading_point/get?id=' + tradingPointId).then(function (response) {
+            $scope.selectedTradingPointInsert = response.data;
+        });
+
+        $http.get('/api/seller').then(function (response) {
+            var seller = response.data;
+            var selector = document.getElementById("seller");
+
+            var defaultOption = document.createElement("option");
+            defaultOption.value="";
+            defaultOption.text = "Виберіть продавця";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            $(selector).empty();
+            selector.add(defaultOption);
+            for (var i = 0; i < seller.length; i++) {
+                    if (seller[i].tradingPoint.id == $scope.selectedTradingPointInsert.id) {
+                        var option = document.createElement("option");
+                        option.text = seller[i].nameOfSeller;
+                        option.value = seller[i].id;
+                        selector.add(option);
+                    }
+            }
+        });
+        $http.get('/api/goods_of_trading_point').then(function (response) {
+            var goodsOfTradingPoint = response.data;
+            var selector = document.getElementById("goodsOfTradingPoint");
+
+            var defaultOption = document.createElement("option");
+            defaultOption.value="";
+            defaultOption.text = "Виберіть товар";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            $(selector).empty();
+            selector.add(defaultOption);
+            for (var i = 0; i < goodsOfTradingPoint.length; i++) {
+                    if (goodsOfTradingPoint[i].tradingPoint.id == $scope.selectedTradingPointInsert.id) {
+                        var option = document.createElement("option");
+                        option.text = goodsOfTradingPoint[i].goods.nameOfGoods;
+                        option.value = goodsOfTradingPoint[i].id;
+                        selector.add(option);
+                    }
+            }
+        });
+    }
+
+    document.getElementById("updateTradingPoint").addEventListener("change", changeTradingPointUpdate);
+    function changeTradingPointUpdate() {
+        var indexTradingPoint= document.getElementById("updateTradingPoint").selectedIndex;
+        var tradingPointId= document.getElementById("updateTradingPoint").options[indexTradingPoint].value;
+
+        $http.get('/api/trading_point/get?id=' + tradingPointId).then(function (response) {
+            $scope.selectedTradingPointUpdate = response.data;
+        });
+        $http.get('/api/seller').then(function (response) {
+            var seller = response.data;
+            var selector = document.getElementById("updateSeller");
+
+            var defaultOption = document.createElement("option");
+            defaultOption.value="";
+            defaultOption.text = "Виберіть продавця";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            $(selector).empty();
+            selector.add(defaultOption);
+            for (var i = 0; i < seller.length; i++) {
+                if (seller[i].tradingPoint.id == $scope.selectedTradingPointUpdate.id) {
+                    var option = document.createElement("option");
+                    option.text = seller[i].nameOfSeller;
+                    option.value = seller[i].id;
+                    selector.add(option);
+                }
+            }
+        });
+        $http.get('/api/goods_of_trading_point').then(function (response) {
+            var goodsOfTradingPoint = response.data;
+            var selector = document.getElementById("updateGoodsOfTradingPoint");
+
+            var defaultOption = document.createElement("option");
+            defaultOption.value="";
+            defaultOption.text = "Виберіть товар";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            $(selector).empty();
+            selector.add(defaultOption);
+            for (var i = 0; i < goodsOfTradingPoint.length; i++) {
+                if (goodsOfTradingPoint[i].tradingPoint.id == $scope.selectedTradingPointUpdate.id) {
+                    var option = document.createElement("option");
+                    option.text = goodsOfTradingPoint[i].goods.nameOfGoods;
+                    option.value = goodsOfTradingPoint[i].id;
+                    selector.add(option);
+                }
+            }
+        });
+    }
 });

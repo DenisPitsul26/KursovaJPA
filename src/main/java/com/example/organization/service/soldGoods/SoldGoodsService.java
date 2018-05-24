@@ -49,5 +49,15 @@ public class SoldGoodsService implements ISoldGoodsService{
     public double getNumberOfSoldGoodsByTypeOfTradingPointAndDateOfSale(int typeOfTradingPointId, LocalDate startTime, LocalDate finishTime) throws SQLException {
         return soldGoodsRepository.getNumberOfSoldGoodsBytypeOfTradingPointAndDateOfSale(typeOfTradingPointId, startTime, finishTime);
     }
+
+    @Override
+    public List<SoldGoods> getSoldGoodsByTradingPointAndGoodsAndDateOfSale(int tradingPointId, int goodsId, LocalDate startTime, LocalDate finishTime) throws SQLException {
+        return soldGoodsRepository.getSoldGoodsByTradingPointAndGoodsAndDateOfSale(tradingPointId, goodsId, startTime, finishTime);
+    }
+
+    @Override
+    public List<SoldGoods> getSoldGoodsByGoodsAndDateOfSale(int goodsId, LocalDate startTime, LocalDate finishTime) throws SQLException {
+        return soldGoodsRepository.getSoldGoodsByGoodsAndDateOfSale(goodsId, startTime, finishTime);
+    }
 }
 

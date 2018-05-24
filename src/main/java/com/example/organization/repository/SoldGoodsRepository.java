@@ -19,4 +19,17 @@ public interface SoldGoodsRepository extends JpaRepository<SoldGoods, Integer>{
     @Query("select sum(sold.numberOfSoldGoods) from SoldGoods sold where sold.tradingPoint.typeOfTradingPoint.id = :typeOfTradingPointId and sold.dateOfSale between :startTime and :finishTime")
     double getNumberOfSoldGoodsBytypeOfTradingPointAndDateOfSale(@Param("typeOfTradingPointId") int typeOfTradingPointId,@Param("startTime") LocalDate startTime, @Param("finishTime") LocalDate finishTime);
 
+    /*//8
+    @Query("select sum(sold.numberOfSoldGoods) from SoldGoods sold where sold.tradingPoint.typeOfTradingPoint.id = :typeOfTradingPointId and sold.dateOfSale between :startTime and :finishTime")
+    double getNumberOfSoldGoodsByTypeOfTradingPointAndDateOfSale(@Param("typeOfTradingPointId") int typeOfTradingPointId,@Param("startTime") LocalDate startTime, @Param("finishTime") LocalDate finishTime);
+    */
+
+    //9
+    @Query("select sold from SoldGoods sold where sold.tradingPoint.id = :tradingPointId and sold.goodsOfTradingPoint.goods.id = :goodsId and sold.dateOfSale between :startTime and :finishTime")
+    List<SoldGoods> getSoldGoodsByTradingPointAndGoodsAndDateOfSale(@Param("tradingPointId") int tradingPointId, @Param("goodsId") int goodsId, @Param("startTime") LocalDate startTime, @Param("finishTime") LocalDate finishTime);
+
+    //10
+    @Query("select sold from SoldGoods sold where sold.goodsOfTradingPoint.goods.id = :goodsId and sold.dateOfSale between :startTime and :finishTime")
+    List<SoldGoods> getSoldGoodsByGoodsAndDateOfSale(@Param("goodsId") int goodsId, @Param("startTime") LocalDate startTime, @Param("finishTime") LocalDate finishTime);
+
 }
