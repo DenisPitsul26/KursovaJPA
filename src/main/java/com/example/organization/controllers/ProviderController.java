@@ -1,11 +1,15 @@
 package com.example.organization.controllers;
 
 import com.example.organization.model.Provider;
+import com.example.organization.model.Request;
 import com.example.organization.service.provider.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.crypto.Data;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -38,5 +42,10 @@ public class ProviderController {
             @RequestParam("id") int id) throws SQLException {
         provider.setId(id);
         return providerService.updateProvider(provider);
+    }
+
+    @RequestMapping("/provider/getProvidersByGoodsAndDateOfRequest")
+    public List<Provider> getProvidersByGoodsAndDateOfRequest(@RequestParam("goods_id") int goodsId , @RequestParam("startTime") Date startTime, @RequestParam("finishTime") Date finishTime) throws SQLException {
+        return providerService.getProvidersByGoodsAndDateOfRequest(goodsId, startTime.toLocalDate(), finishTime.toLocalDate());
     }
 }

@@ -42,4 +42,14 @@ public class SellerController {
         seller.setId(id);
         return sellerService.updateSeller(seller);
     }
+
+    @RequestMapping("/seller/getCountOfSeller")
+    public double getCountOfSeller() throws SQLException {
+        return sellerService.getCountOfSeller();
+    }
+
+    @RequestMapping("/seller/getCountOfSellerByTypeOfTradingPointId")
+    public double getCountOfSellerByTypeOfTradingPointId(@RequestParam("typeOfTradingPointId") int typeOfTradingPointId) throws SQLException {
+        return sellerService.getCountOfSellerByTypeOfTradingPointId(typeOfTradingPointId);
+    }
 }

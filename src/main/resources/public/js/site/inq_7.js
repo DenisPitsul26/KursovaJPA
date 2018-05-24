@@ -3,45 +3,41 @@ var app = angular.module("myinq_7", []);
 
 app.controller("inq_7", function ($http, $scope){
 
-    $http.get('/api/type').then(function (response){
-        var types = response.data;
+    $http.get('/api/type_of_trading_point').then(function (response){
+        console.log("ddddd");
+        var type = response.data;
+        console.log(response.data);
         var selector = document.getElementById("Type");
         $(selector).empty();
-        for (var i = 0; i < types.length; i++) {
+        for (var i = 0; i < type.length; i++) {
             var option = document.createElement("option");
-            option.text = types[i].name;
-            option.value = types[i].id;
+            option.text = type[i].typeOfTypeOfTradingPoint;
+            option.value = type[i].id;
             selector.add(option);
         }
     });
-
-    $http.get('/api/status').then(function (response){
-        var status = response.data;
-        var selector = document.getElementById("Status");
-        $(selector).empty();
-        for (var i = 0; i < status.length; i++) {
-            var option = document.createElement("option");
-            option.text = status[i].name;
-            option.value = status[i].id;
-            selector.add(option);
-        }
-    });
-
 
     this.update_request = function add() {
-        
-        var indexOfType = document.getElementById("Type").selectedIndex;
-        type_id = document.getElementById("Type").options[indexOfType].value;
-        
-        var indexOfStatus = document.getElementById("Status").selectedIndex;
-        status_id = document.getElementById("Status").options[indexOfStatus].value;
-        
 
-        $scope.providers = [];
-        $http.get('/api/product/getCountProductByTypeAndStatus?type_id=' + type_id + "&status_id=" + status_id).then(function (response){
+        console.log("Start...");
 
-            document.getElementById("Rezultat").innerText = response.data;
+        var indexOfTypeOfTradingPoint = document.getElementById("Type").selectedIndex;
+        var typeOfTradingPointId = document.getElementById("Type").options[indexOfTypeOfTradingPoint].value;
 
+
+        var start_time = document.getElementById("StartTime").value;
+        var finish_time = document.getElementById("FinishTime").value;
+
+        $scope.counts = [];
+        $http.get('/api/sold_goods/getNumberOfSoldGoodsByTypeOfTradingPointAndDateOfSale?typeOfTradingPointId=' + typeOfTradingPointId +"&startTime="+ start_time +"&finishTime="+ finish_time).then(function (response){
+            $http.get('/api/seller/getCountOfSellerByTypeOfTradingPointId?typeOfTradingPointId='+ typeOfTradingPointId).then(function (response2){
+
+                console.log(response.data);
+                console.log(response2.data);
+                document.getElementById("Rezultat").innerText = ((response.data/response2.data).toFixed(2))+"\tодиниць товарів на одного продавця.";
+
+                console.log(response.data/response2.data)
+            });
         });
 
     };

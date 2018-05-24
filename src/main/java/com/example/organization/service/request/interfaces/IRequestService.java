@@ -17,6 +17,4 @@ public interface IRequestService {
     public void deleteRequest(int id) throws SQLException;
 
     public List<Request> getAll() throws SQLException;
-
-    public List<Request> getProvidersByGoodsAndDateOfRequest(int goodsId, LocalDate startTime, LocalDate finishTime) throws SQLException;
 }

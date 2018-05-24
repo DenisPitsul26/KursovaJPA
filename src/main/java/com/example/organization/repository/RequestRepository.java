@@ -12,8 +12,4 @@ import java.util.List;
 
 public interface RequestRepository extends JpaRepository<Request, Integer>{
 
-    @Query("select req.provider.nameOfProvider from Request req where req.goods.id = :goods_id and req.dateOfRequest >= :startTime and req.dateOfRequest <= :finishTime order by req.id")
-    //@Query("select req.provider from Request req")
-    List<Request> getProvidersByGoodsAndDateOfRequest(@Param("goods_id") int goods_id, @Param("startTime") LocalDate startTime, @Param("finishTime") LocalDate finishTime);
-
 }

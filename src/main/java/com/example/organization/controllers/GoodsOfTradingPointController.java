@@ -42,4 +42,19 @@ public class GoodsOfTradingPointController {
         goodsOfTradingPoint.setId(id);
         return goodsOfTradingPointService.updateGoodsOfTradingPoint(goodsOfTradingPoint);
     }
+
+    @RequestMapping("/goods_of_trading_point/getGoodsByTradingPoint")
+    public List<GoodsOfTradingPoint> getBuyerByGoodsAndNumberOfSoldGoods(@RequestParam("tradingPointId") int tradingPointId) throws SQLException {
+        return goodsOfTradingPointService.getGoodsByTradingPoint(tradingPointId);
+    }
+
+    @RequestMapping("/goods_of_trading_point/getGoodsPriceAndNumberOfGoodsByTypeOfTradingPointAndGoods")
+    public List<GoodsOfTradingPoint> getGoodsPriceAndNumberOfGoodsByTypeOfTradingPointAndGoods(@RequestParam("typeOfTradingPointId") int typeOfTradingPointId, @RequestParam("goodsId") int goodsId) throws SQLException {
+        return goodsOfTradingPointService.getGoodsPriceAndNumberOfGoodsByTypeOfTradingPointAndGoods(typeOfTradingPointId, goodsId);
+    }
+
+    @RequestMapping("/goods_of_trading_point/getGoodsPriceAndNumberOfGoodsByAllTradingPointAndGoods")
+    public List<GoodsOfTradingPoint> getGoodsPriceAndNumberOfGoodsByAllTradingPointAndGoods(@RequestParam("goodsId") int goodsId) throws SQLException {
+        return goodsOfTradingPointService.getGoodsPriceAndNumberOfGoodsByAllTradingPointAndGoods(goodsId);
+    }
 }

@@ -27,17 +27,13 @@ app.controller("inq_1", function ($http, $scope){
         //var amount = document.getElementById("Amount").value;
 
         $scope.providers = [];
-        $http.get('api/request/getProvidersByGoodsAndDateOfRequest?goods_id=' + goods_id + "&startTime=" + start_time + "&finishTime=" + finish_time).then(function (response){
+        $http.get('/api/provider/getProvidersByGoodsAndDateOfRequest?goods_id=' + goods_id + "&startTime=" + start_time + "&finishTime=" + finish_time).then(function (response){
             document.getElementById("Rezultat").innerText = " ";
             $scope.providers = response.data;
-
-            console.log($scope.providers.length);
 
             if ($scope.providers.length <= 0) {
                 document.getElementById("Rezultat").innerText = "Даної інформації в базі не знайдено";
             }
-
-
         });
 
     };

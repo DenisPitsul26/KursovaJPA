@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -38,4 +39,15 @@ public class SoldGoodsService implements ISoldGoodsService{
     public List<SoldGoods> getAll() throws SQLException {
         return soldGoodsRepository.findAll();
     }
+
+    @Override
+    public double getNumberOfSoldGoodsByDateOfSale(LocalDate startTime, LocalDate finishTime) throws SQLException {
+        return soldGoodsRepository.getNumberOfSoldGoodsByDateOfSale(startTime, finishTime);
+    }
+
+    @Override
+    public double getNumberOfSoldGoodsByTypeOfTradingPointAndDateOfSale(int typeOfTradingPointId, LocalDate startTime, LocalDate finishTime) throws SQLException {
+        return soldGoodsRepository.getNumberOfSoldGoodsBytypeOfTradingPointAndDateOfSale(typeOfTradingPointId, startTime, finishTime);
+    }
 }
+

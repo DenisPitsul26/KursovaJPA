@@ -1,5 +1,6 @@
 package com.example.organization.service.goodsOfTradingPoint.interfaces;
 
+import com.example.organization.model.Goods;
 import com.example.organization.model.GoodsOfTradingPoint;
 
 import java.sql.SQLException;
@@ -15,4 +16,11 @@ public interface IGoodsOfTradingPointService {
     public void deleteGoodsOfTradingPoint(int id) throws SQLException;
 
     public List<GoodsOfTradingPoint> getAll() throws SQLException;
+
+    List<GoodsOfTradingPoint> getGoodsByTradingPoint(int tradingPointId) throws SQLException;
+
+    List<GoodsOfTradingPoint> getGoodsPriceAndNumberOfGoodsByTypeOfTradingPointAndGoods(int typeOfTradingPointId, int goodsId) throws SQLException;
+
+    List<GoodsOfTradingPoint> getGoodsPriceAndNumberOfGoodsByAllTradingPointAndGoods(int goodsId) throws SQLException;
+
 }

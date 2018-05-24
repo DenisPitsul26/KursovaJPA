@@ -15,4 +15,8 @@ public interface ISellerService {
     public void deleteSeller(int id) throws SQLException;
 
     public List<Seller> getAll() throws SQLException;
+
+    double getCountOfSeller() throws SQLException;
+
+    double getCountOfSellerByTypeOfTradingPointId(int typeOfTradingPointId) throws SQLException;
 }

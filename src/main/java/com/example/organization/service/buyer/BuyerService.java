@@ -38,4 +38,9 @@ public class BuyerService implements IBuyerService{
     public List<Buyer> getAll() throws SQLException {
         return buyerRepository.findAll();
     }
+
+    @Override
+    public List<Buyer> getBuyerByGoodsAndNumberOfSoldGoods(int goodsId, int number) throws SQLException {
+        return buyerRepository.getBuyerByGoodsAndNumberOfSoldGoods(goodsId, number);
+    }
 }

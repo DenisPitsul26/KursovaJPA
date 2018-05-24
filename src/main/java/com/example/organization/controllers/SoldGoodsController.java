@@ -1,10 +1,12 @@
 package com.example.organization.controllers;
 
+import com.example.organization.model.Provider;
 import com.example.organization.model.SoldGoods;
 import com.example.organization.service.soldGoods.SoldGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -41,5 +43,15 @@ public class SoldGoodsController {
     {
         soldGoods.setId(id);
         return soldGoodsService.updateSoldGoods(soldGoods);
+    }
+
+    @RequestMapping("/sold_goods/getNumberOfSoldGoodsByDateOfSale")
+    public double getNumberOfSoldGoodsByDateOfSale(@RequestParam("startTime") Date startTime, @RequestParam("finishTime") Date finishTime) throws SQLException {
+        return soldGoodsService.getNumberOfSoldGoodsByDateOfSale(startTime.toLocalDate(), finishTime.toLocalDate());
+    }
+
+    @RequestMapping("/sold_goods/getNumberOfSoldGoodsByTypeOfTradingPointAndDateOfSale")
+    public double getNumberOfSoldGoodsByTypeOfTradingPointAndDateOfSale(@RequestParam("typeOfTradingPointId") int typeOfTradingPointId, @RequestParam("startTime") Date startTime, @RequestParam("finishTime") Date finishTime) throws SQLException {
+        return soldGoodsService.getNumberOfSoldGoodsByTypeOfTradingPointAndDateOfSale(typeOfTradingPointId, startTime.toLocalDate(), finishTime.toLocalDate());
     }
 }

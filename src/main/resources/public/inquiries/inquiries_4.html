@@ -4,7 +4,7 @@
 <head >
     <meta charset="utf-8">
 
-    <title>Query #1</title>
+    <title>Query #4</title>
 
     <meta name="description" content="uAdmin is a Professional, Responsive and Flat Admin Template created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">
@@ -31,7 +31,7 @@
 
     <script src="../js/vendor/modernizr-respond.min.js"></script>
 </head >
-<body ng-app="myinq_1">
+<body ng-app="myinq_4">
 <div id="page-container">
     <header class="navbar navbar-inverse">
         <a href="../index.html" class="navbar-brand"><img src="../img/template/logo.png" alt="logo"></a>
@@ -39,7 +39,7 @@
         <div id="loading" class="pull-left"><i class="fa fa-certificate fa-spin"></i></div>
     </header>
 
-    <div id="inner-container" ng-controller="inq_1 as ctrl">
+    <div id="inner-container" ng-controller="inq_4 as ctrl">
         <aside id="page-sidebar">
             <nav id="primary-nav">
                 <ul>
@@ -102,24 +102,20 @@
                             <div class="card-box">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <h3 ><b> Запит #1 Одержати перелік постачальників, що поставляють зазначений вид товару, або деякий товар в обсязі за зазначений період. </b></h3>
+                                        <h3 ><b> Запит #4 Одержати відомості про обсяг і ціни на зазначений товар по торговельних точках заданого типу. </b></h3>
                                         <hr>
                                         <h3>Фільтр:</h3>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <label>Тип торгівельної точки:</label>
+                                            <select class="form-control" id="typeOfTradingPoint"></select>
+                                            <br>
+                                        </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <label>Товар:</label>
                                             <select class="form-control" id="goods"></select>
                                             <br>
-                                        </div>
-
-                                        <div class="col-sm-12 col-md-6 col-lg-6">
-                                            <label>Дата від:</label>
-                                            <input class="form-control" type="date" name="StartTime" id="StartTime">
-                                        </div>
-
-                                        <div class="col-sm-12 col-md-6 col-lg-6">
-                                            <label>Дата до:</label>
-                                            <input class="form-control" type="date" name="FinishTime" id="FinishTime">
                                         </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -136,13 +132,19 @@
                                                 <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Постачальник</th>
+                                                    <th>Торгівельна точка</th>
+                                                    <th>Товар</th>
+                                                    <th>Обсяг товару</th>
+                                                    <th>Ціна</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr ng-repeat="provider in providers">
-                                                    <td>{{provider.id}}</td>
-                                                    <td>{{provider.nameOfProvider}}</td>
+                                                <tr ng-repeat="goodsOfTradingPoint in goodsOfTradingPoints">
+                                                    <td>{{goodsOfTradingPoint.id}}</td>
+                                                    <td>{{goodsOfTradingPoint.tradingPoint.nameOfTradingPoint}}</td>
+                                                    <td>{{goodsOfTradingPoint.goods.nameOfGoods}}</td>
+                                                    <td>{{goodsOfTradingPoint.numberOfGoods}}</td>
+                                                    <td>{{goodsOfTradingPoint.price}}</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -243,7 +245,7 @@
     <script src="../js/main.js"></script>
 
     <script type="text/javascript" src="../js/angular.min.js"></script>
-    <script type="text/javascript" src="../js/site/inq_1.js"></script>
+    <script type="text/javascript" src="../js/site/inq_4.js"></script>
 </div>
 </body>
 </html>

@@ -4,53 +4,39 @@ var app = angular.module("myinq_2", []);
 app.controller("inq_2", function ($http, $scope){
 
 
-    var product_id = 1;
-    var date = '2017-01-01';
-    var amount = 3;
-
-    $scope.providers = [];
-    $http.get('/api/provider/getProvidersByTimerAndCount?product_id='+ product_id + "&timerStart="+ date + "&timerFinish="+ date + "&amount="+ amount).then(function (response){
-        $scope.providers = response.data;
-    });
-
-    $http.get('/api/product').then(function (response){
-        var products = response.data;
-        var selector = document.getElementById("Product");
+    $http.get('/api/goods').then(function (response){
+        var goods = response.data;
+        var selector = document.getElementById("goods");
         $(selector).empty();
-        for (var i = 0; i < products.length; i++) {
+        for (var i = 0; i < goods.length; i++) {
             var option = document.createElement("option");
-            option.text = products[i].name;
-            option.value = products[i].id;
+            option.text = goods[i].nameOfGoods;
+            option.value = goods[i].id;
             selector.add(option);
         }
     });
 
     this.update_request = function add() {
-
         console.log("Start...");
 
-        var indexOfProduct = document.getElementById("Product").selectedIndex;
-        product_id = document.getElementById("Product").options[indexOfProduct].value;
+        var indexOfGoods = document.getElementById("goods").selectedIndex;
+        var goods_id = document.getElementById("goods").options[indexOfGoods].value;
 
-        var start_time = document.getElementById("StartTime").value;
-        var finish_time = document.getElementById("StartTime").value;
+        var number = document.getElementById("number").value;
 
-        var amount = document.getElementById("Amount").value;
+        console.log(goods_id);
+        console.log(number);
 
-        $scope.providers = [];
-        $http.get('/api/provider/getProvidersByTimerAndCount?product_id=' + product_id + "&timerStart=" + date + "&timerFinish=" + date + "&amount=" + amount).then(function (response){
-
-
+        $scope.buyers = [];
+        $http.get('/api/buyer/getBuyerByGoodsAndNumberOfSoldGoods?goods_id=' + goods_id + "&number=" + number).then(function (response){
             document.getElementById("Rezultat").innerText = " ";
-            $scope.providers = response.data;
+            $scope.buyers = response.data;
 
-            console.log($scope.providers.length);
+            console.log($scope.buyers.length);
 
-            if ($scope.providers.length <= 0) {
+            if ($scope.buyers.length <= 0) {
                 document.getElementById("Rezultat").innerText = "Даної інформації в базі не знайдено";
             }
-
-
         });
 
     };

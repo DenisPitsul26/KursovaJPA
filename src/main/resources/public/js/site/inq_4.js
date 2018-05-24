@@ -3,40 +3,47 @@ var app = angular.module("myinq_4", []);
 
 app.controller("inq_4", function ($http, $scope){
 
-    $http.get('/api/type').then(function (response){
-        var types = response.data;
-        var selector = document.getElementById("Type");
+    $http.get('/api/type_of_trading_point').then(function (response){
+        var typeOfTradingPoint = response.data;
+        var selector = document.getElementById("typeOfTradingPoint");
         $(selector).empty();
-        for (var i = 0; i < types.length; i++) {
+        for (var i = 0; i < typeOfTradingPoint.length; i++) {
             var option = document.createElement("option");
-            option.text = types[i].name;
-            option.value = types[i].id;
+            option.text = typeOfTradingPoint[i].typeOfTypeOfTradingPoint;
+            option.value = typeOfTradingPoint[i].id;
+            selector.add(option);
+        }
+    });
+    $http.get('/api/goods').then(function (response){
+        var goods = response.data;
+        var selector = document.getElementById("goods");
+        $(selector).empty();
+        for (var i = 0; i < goods.length; i++) {
+            var option = document.createElement("option");
+            option.text = goods[i].nameOfGoods;
+            option.value = goods[i].id;
             selector.add(option);
         }
     });
 
     this.update_request = function add() {
+        console.log("Start...");
 
-        var indexOfType = document.getElementById("Type").selectedIndex;
-        type_id = document.getElementById("Type").options[indexOfType].value;
+        var indexOfTypeOfTradingPoint = document.getElementById("typeOfTradingPoint").selectedIndex;
+        var typeOfTradingPointId = document.getElementById("typeOfTradingPoint").options[indexOfTypeOfTradingPoint].value;
 
-        var start_time = document.getElementById("StartTime").value;
-        var finish_time = document.getElementById("FinishTime").value;
+        var indexOfGoods = document.getElementById("goods").selectedIndex;
+        var goodsId = document.getElementById("goods").options[indexOfGoods].value;
 
-        $scope.customers = [];
-        $http.get('/api/customer/getCustomerByTypeAndDate?startTime=' + start_time + "&finishTime=" + finish_time + "&type_id=" + type_id).then(function (response){
-
+        $scope.goodsOfTradingPoints = [];
+        $http.get('/api/goods_of_trading_point/getGoodsPriceAndNumberOfGoodsByTypeOfTradingPointAndGoods?typeOfTradingPointId=' + typeOfTradingPointId + "&goodsId=" + goodsId).then(function (response){
 
             document.getElementById("Rezultat").innerText = " ";
-            $scope.customers = response.data;
+            $scope.goodsOfTradingPoints = response.data;
 
-            console.log($scope.customers.length);
-
-            if ($scope.customers.length <= 0) {
+            if ($scope.goodsOfTradingPoints.length <= 0) {
                 document.getElementById("Rezultat").innerText = "Даної інформації в базі не знайдено";
             }
-
-
         });
 
     };

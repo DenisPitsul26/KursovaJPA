@@ -38,4 +38,19 @@ public class GoodsOfTradingPointService implements IGoodsOfTradingPointService{
     public List<GoodsOfTradingPoint> getAll() throws SQLException {
         return goodsOfTradingPointRepository.findAll();
     }
+
+    @Override
+    public List<GoodsOfTradingPoint> getGoodsByTradingPoint(int tradingPointId) throws SQLException {
+        return goodsOfTradingPointRepository.getGoodsByTradingPoint(tradingPointId);
+    }
+
+    @Override
+    public List<GoodsOfTradingPoint> getGoodsPriceAndNumberOfGoodsByTypeOfTradingPointAndGoods(int typeOfTradingPointId, int goodsId) throws SQLException {
+        return goodsOfTradingPointRepository.getGoodsPriceAndNumberOfGoodsByTypeOfTradingPointAndGoods(typeOfTradingPointId, goodsId);
+    }
+
+    @Override
+    public List<GoodsOfTradingPoint> getGoodsPriceAndNumberOfGoodsByAllTradingPointAndGoods(int goodsId) throws SQLException {
+        return goodsOfTradingPointRepository.getGoodsPriceAndNumberOfGoodsByAllTradingPointAndGoods(goodsId);
+    }
 }

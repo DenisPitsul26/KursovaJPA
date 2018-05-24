@@ -38,4 +38,14 @@ public class SellerService implements ISellerService{
     public List<Seller> getAll() throws SQLException {
         return sellerRepository.findAll();
     }
+
+    @Override
+    public double getCountOfSeller() throws SQLException {
+        return sellerRepository.getCountOfSeller();
+    }
+
+    @Override
+    public double getCountOfSellerByTypeOfTradingPointId(int typeOfTradingPointId) throws SQLException {
+        return sellerRepository.getCountOfSellerByTypeOfTradingPointId(typeOfTradingPointId);
+    }
 }
