@@ -200,8 +200,8 @@
                                         <h4>Добавлення товару торгівельної точки:</h4>
                                         <select required class="form-control" type="text" name="tradingPoint" id="tradingPoint"></select><br>
                                         <select required class="form-control" type="text" name="goods" id="goods"></select><br>
-                                        <input class="form-control" type="text" name="price" id="price" placeholder="Ціна"><br>
-                                        <input class="form-control" type="text" name="numberOfGoods" id="numberOfGoods" placeholder="Кількість товару або вага(кг)"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="price" id="price" placeholder="Ціна"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfGoods" id="numberOfGoods" placeholder="Кількість товару або вага(кг)"><br>
                                         <button type="button" class="btn btn-primary" ng-click="ctrl.insertGoodsOfTradingPoint()">Добавити</button>
                                         <br>
                                     </div>
@@ -242,8 +242,8 @@
                                         <h4> ID <div id="updateId"></div> </h4>
                                         <select class="form-control" type="text" name="tradingPoint" id="updateTradingPoint"></select><br>
                                         <select class="form-control" type="text" name="goods" id="updateGoods"></select><br>
-                                        <input class="form-control" type="text" name="price" id="updatePrice"><br>
-                                        <input class="form-control" type="text" name="numberOfGoods" id="updateNumberOfGoods"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="price" id="updatePrice"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfGoods" id="updateNumberOfGoods"><br>
                                         <button type="button" class="btn btn-primary" ng-click="ctrl.updateGoodsOfTradingPoint()">Оновити</button>
                                         <br>
                                     </div>

@@ -20,4 +20,7 @@ public interface IRequestService {
 
     List<Request> getRequestByProviderAndGoods(int providerId, int goodsId) throws SQLException;
 
+    List<Request> getRequestByNumberRequest(int numberRequest) throws SQLException;
+
+    List<Request> getDifferentNumberRequest() throws SQLException;
 }

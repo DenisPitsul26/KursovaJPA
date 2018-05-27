@@ -24,8 +24,8 @@ app.controller("AppCtrl", function ($scope, $http) {
     this.deleteTypeOfTradingPoint = function (id) {
         $http.get("api/type_of_trading_point/delete?id="+id).then(function (response) {
             window.location.reload();
-        })
-    }
+        });
+    };
 
     this.startUpdate = function startUpdate(id, type) {
         document.getElementById("updateId").innerText = id;

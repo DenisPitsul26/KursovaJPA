@@ -3,35 +3,35 @@ var app = angular.module("myinq_16", []);
 
 app.controller("inq_16", function ($http, $scope){
 
-    $http.get('/api/product').then(function (response){
-        var product = response.data;
-        var selector = document.getElementById("Product");
+    $http.get('/api/request/getDifferentNumberRequest').then(function (response){
+        var request = response.data;
+        var selector = document.getElementById("request");
         $(selector).empty();
-        for (var i = 0; i < product.length; i++) {
+        for (var i = 0; i < request.length; i++) {
             var option = document.createElement("option");
-            option.text = product[i].name;
-            option.value = product[i].id;
+            option.text = request[i].numberRequest;
+            option.value = request[i].numberRequest;
             selector.add(option);
         }
     });
 
     this.update_request = function add() {
-        
-        var indexOfProduct = document.getElementById("Product").selectedIndex;
-        product_id = document.getElementById("Product").options[indexOfProduct].value;
+        console.log("Start...");
 
-        $scope.providers = [];
-        $http.get('/api/provider/getProvidersByDefect?product_id=' + product_id).then(function (response){
+        var indexOfRequest = document.getElementById("request").selectedIndex;
+        var requestId = document.getElementById("request").options[indexOfRequest].value;
 
+        console.log("Start...");
 
+        $scope.request = [];
+        $http.get('/api/request/getRequestByNumberRequest?numberRequest=' + requestId).then(function (response){
             document.getElementById("Rezultat").innerText = " ";
-            $scope.providers = response.data;
-            
-            if ($scope.providers.length <= 0) {
+            $scope.request = response.data;
+            console.log(response.data);
+
+            if ($scope.request.length <= 0) {
                 document.getElementById("Rezultat").innerText = "Даної інформації в базі не знайдено";
             }
-
-
         });
 
     };

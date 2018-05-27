@@ -190,7 +190,7 @@
                     <div class="panel-heading">
                         <div class="panel-heading">
                             <h3>
-                                Секції торгівельних точок
+                                Продавці
                                 <button ng-click="ctrl.startInsertSeller()" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" type="button" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></button>
                             </h3>
                             <div id="accordion">
@@ -201,7 +201,7 @@
                                             <h4>Добавлення продавця:</h4>
                                             <select required class="form-control" type="text" name="tradingPoint" id="tradingPoint"></select><br>
                                             <input class="form-control" type="text" name="nameOfSeller" id="nameOfSeller" placeholder="Ім'я продавця"><br>
-                                            <input class="form-control" type="text" name="sallary" id="sallary" placeholder="Зарплата"><br>
+                                            <input class="form-control" type="text" onfocus="(this.type='number')" name="sallary" id="sallary" placeholder="Зарплата"><br>
                                             <input class="form-control" type="text" onfocus="(this.type='date')" name="dateStarOfWork" id="dateStarOfWork" placeholder="Дата початку роботи"><br>
                                             <button type="button" class="btn btn-primary" ng-click="ctrl.insertSeller()">Добавити</button>
                                             <br>
@@ -243,7 +243,7 @@
                                             <h4> ID <div id="updateId"></div> </h4>
                                             <select class="form-control" type="text" name="tradingPoint" id="updateTradingPoint"></select><br>
                                             <input class="form-control" type="text" name="nameOfSeller" id="updateNameOfSeller"><br>
-                                            <input class="form-control" type="text" name="sallary" id="updateSallary"><br>
+                                            <input class="form-control" type="text" onfocus="(this.type='number')" name="sallary" id="updateSallary"><br>
                                             <input class="form-control" type="date" name="dateStarOfWork" id="updateDateStarOfWork"><br>
                                             <button type="button" class="btn btn-primary" ng-click="ctrl.updateSeller()">Оновити</button>
                                             <br>

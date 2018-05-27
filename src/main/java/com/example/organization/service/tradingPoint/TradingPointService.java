@@ -38,4 +38,14 @@ public class TradingPointService implements ITradingPointService {
     public List<TradingPoint> getAll() throws SQLException {
         return tradingPointRepository.findAll();
     }
+
+    @Override
+    public double getNumberOfCountersByTradingPoint(int tradingPointId) throws SQLException {
+        return tradingPointRepository.getNumberOfCountersByTradingPoint(tradingPointId);
+    }
+
+    @Override
+    public double getSumLeasePaymentsAndUtilitiesByTradingPoint(int tradingPointId) throws SQLException {
+        return tradingPointRepository.getSumLeasePaymentsAndUtilitiesByTradingPoint(tradingPointId);
+    }
 }

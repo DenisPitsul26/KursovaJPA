@@ -29,4 +29,16 @@ public interface ISoldGoodsService {
 
     List<SoldGoods> getSoldGoodsByGoodsAndDateOfSale(int goodsId, LocalDate startTime, LocalDate finishTime) throws SQLException;
 
+    List<SoldGoods> getTheMostActiveBuyersByAllTradingPoint() throws SQLException;
+
+    List<SoldGoods> getTheMostActiveBuyersByTypeOfTradingPoint(int typeOfTradingPointId) throws SQLException;
+
+    double getCountOfSoldGoodsByTradingPoint(int tradingPointId) throws SQLException;
+
+    double getAmountOfSoldGoodsByTradingPoint(int tradingPointId) throws SQLException;
+
+    List<SoldGoods> getBuyerByTradingPointAndGoodsAndDateOfSale(int typeOfTradingPointId, int goodsId, LocalDate startTime, LocalDate finishTime);
+
+    List<SoldGoods> getBuyerByGoodsAndDateOfSale(int goodsId, LocalDate startTime, LocalDate finishTime);
+
 }

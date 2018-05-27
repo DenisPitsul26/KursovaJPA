@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="no-js lt-ie9">
+<html class="no-js">
+<head >
+    <meta charset="utf-8">
+
+    <title>Query #15</title>
+
+    <meta name="description" content="uAdmin is a Professional, Responsive and Flat Admin Template created by pixelcave and published on Themeforest">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="apple-touch-icon" href="../img/icon57.png" sizes="57x57">
+    <link rel="apple-touch-icon" href="../img/icon72.png" sizes="72x72">
+    <link rel="apple-touch-icon" href="../img/icon76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="../img/icon114.png" sizes="114x114">
+    <link rel="apple-touch-icon" href="../img/icon120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="../img/icon144.png" sizes="144x144">
+    <link rel="apple-touch-icon" href="../img/icon152.png" sizes="152x152">
+
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+    <link rel="stylesheet" href="../css/plugins.css">
+
+    <link rel="stylesheet" href="../css/main.css">
+
+    <link rel="stylesheet" href="../css/themes.css">
+
+    <script src="../js/vendor/modernizr-respond.min.js"></script>
+</head >
+<body ng-app="myinq_15">
+<div id="page-container">
+    <header class="navbar navbar-inverse">
+        <a href="../index.html" class="navbar-brand"><img src="../img/template/logo.png" alt="logo"></a>
+
+        <div id="loading" class="pull-left"><i class="fa fa-certificate fa-spin"></i></div>
+    </header>
+
+    <div id="inner-container" ng-controller="inq_15 as ctrl">
+        <aside id="page-sidebar">
+            <nav id="primary-nav">
+                <ul>
+                    <li>
+                        <a href="#"><i class="fa fa-table"></i>Таблиці</a>
+                        <ul>
+                            <li>
+                                <a href="../buyer.html"><i class="fa fa-file-text"></i>Покупці</a>
+                            </li>
+                            <li>
+                                <a href="../goods.html"><i class="fa fa-file-text"></i>Товари</a>
+                            </li>
+                            <li>
+                                <a href="../goods_of_trading_point.html"><i class="fa fa-file-text"></i>Товари торгівельних точок</a>
+                            </li>
+                            <li>
+                                <a href="../provider.html"><i class="fa fa-file-text"></i>Постачальники</a>
+                            </li>
+                            <li>
+                                <a href="../request.html"><i class="fa fa-file-text"></i>Заявки</a>
+                            </li>
+                            <li>
+                                <a href="../section.html"><i class="fa fa-file-text"></i>Секції</a>
+                            </li>
+                            <li>
+                                <a href="../section_of_trading_point.html"><i class="fa fa-file-text"></i>Секції торгівельних точок</a>
+                            </li>
+                            <li>
+                                <a href="../seller.html"><i class="fa fa-file-text"></i>Продавці</a>
+                            </li>
+                            <li>
+                                <a href="../sold_goods.html"><i class="fa fa-file-text"></i>Продані товари</a>
+                            </li>
+                            <li>
+                                <a href="../trading_point.html"><i class="fa fa-file-text"></i>Торгівельні точки</a>
+                            </li>
+                            <li>
+                                <a href="../type_of_trading_point.html"><i class="fa fa-file-te"></i>Типи торгівельних точок</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-question-circle"></i>Запроси</a>
+                        <ul>
+                            <li>
+                                <a href="../buyer.html"><i class="fa fa-file-text"></i>Покупці</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div id="page-content">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-box">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h3 ><b> Запит #15 Одержати дані про рентабельність торговельної точки: співвідношення обсягу продажів до накладних витрат (сумарна заробітна плата продавців + платежі за оренду + комунальні послуги). </b></h3>
+                                        <hr>
+                                        <h3>Фільтр:</h3>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <label>Торгівельна точка:</label>
+                                            <select class="form-control" id="tradingPoint"></select>
+                                            <br>
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <br>
+                                            <button type="button" class="btn btn-success" ng-click="ctrl.update_request()">Пошук</button>
+                                        </div>
+
+                                        <br>
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+
+                                            <hr>
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <hr>
+                                                <div class="col-sm-5 col-md-5 col-lg-5">
+                                                    <h3>Рентабельність торгівельної точки: </h3>
+                                                </div>
+                                                <div class="col-sm-7 col-md-7 col-lg-7">
+                                                    <h3 id="Rezultat"></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="javascript:void(0)" id="to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <div id="modal-user-settings" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4>Profile Settings</h4>
+                </div>
+                <div class="modal-body">
+                    <ul id="example-user-tabs" class="nav nav-tabs" data-toggle="tabs">
+                        <li class="active"><a href="#example-user-tabs-account"><i class="fa fa-cogs"></i> Account</a></li>
+                        <li><a href="#example-user-tabs-profile"><i class="fa fa-user"></i> Profile</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="example-user-tabs-account">
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Success!</strong> Password changed!
+                            </div>
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Username</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">administrator</p>
+                                        <span class="help-block">You can't change your username!</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3" for="example-user-pass">Password</label>
+                                    <div class="col-md-9">
+                                        <input type="password" id="example-user-pass" name="example-user-pass" class="form-control">
+                                        <span class="help-block">if you want to change your password enter your current for confirmation!</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3" for="example-user-newpass">New Password</label>
+                                    <div class="col-md-9">
+                                        <input type="password" id="example-user-newpass" name="example-user-newpass" class="form-control">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="example-user-tabs-profile">
+                            <h4 class="page-header-sub">Image</h4>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <img src="img/placeholders/image_dark_120x120.png" alt="image" class="img-responsive push">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <form action="index.html" class="dropzone">
+                                            <div class="fallback">
+                                                <input name="file" type="file">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+    <script src="../js/helpers/excanvas.min.js"></script><![endif]-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>!window.jQuery && document.write(decodeURI('%3Cscript src="js/vendor/jquery-1.11.1.min.js"%3E%3C/script%3E'));</script>
+
+    <script src="../js/vendor/bootstrap.min.js"></script>
+
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script type="text/javascript" src="../js/site/inq_15.js"></script>
+</div>
+</body>
+</html>
+</html>

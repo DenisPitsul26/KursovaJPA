@@ -24,4 +24,8 @@ public interface SellerRepository extends JpaRepository<Seller, Integer>{
     //12
     @Query("select sel from Seller sel")
     List<Seller> getSallaryOfSellerByAllTradingPoint();
+
+    //15_3
+    @Query("select sum(sel.sallary) from Seller sel where sel.tradingPoint.id = :tradingPointId")
+    double getSumSallaryOfSellersByTradingPoint(@Param("tradingPointId") int tradingPointId);
 }

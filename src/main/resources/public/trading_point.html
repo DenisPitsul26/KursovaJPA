@@ -215,11 +215,11 @@
                                         <h4>Добавлення торгівельної точки:</h4>
                                         <select required class="form-control" type="text" name="typeOfTradingPoint" id="typeOfTradingPoint"></select><br>
                                         <input class="form-control" type="text" name="nameOfTradingPoint" id="nameOfTradingPoint" placeholder="Назва торгівельної точки"><br>
-                                        <input class="form-control" type="text" name="numberOfHalls" id="numberOfHalls" placeholder="Кількість залів"><br>
-                                        <input class="form-control" type="text" name="sizeOfTheTradingPoint" id="sizeOfTheTradingPoint" placeholder="Розмір торгівельної точки"><br>
-                                        <input class="form-control" type="text" name="leasePayments" id="leasePayments" placeholder="Оплата за оренду"><br>
-                                        <input class="form-control" type="text" name="utilities" id="utilities" placeholder="Комунальні послуги"><br>
-                                        <input class="form-control" type="text" name="numberOfCounters" id="numberOfCounters" placeholder="Кількість прилавків"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfHalls" id="numberOfHalls" placeholder="Кількість залів"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="sizeOfTheTradingPoint" id="sizeOfTheTradingPoint" placeholder="Розмір торгівельної точки"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="leasePayments" id="leasePayments" placeholder="Оплата за оренду"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="utilities" id="utilities" placeholder="Комунальні послуги"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfCounters" id="numberOfCounters" placeholder="Кількість прилавків"><br>
                                         <button type="button" class="btn btn-primary" ng-click="ctrl.insertTradingPoint()">Добавити</button>
                                         <br>
                                     </div>
@@ -268,11 +268,11 @@
                                         <h4> ID <div id="updateId"></div> </h4>
                                         <select class="form-control" type="text" name="typeOfTradingPoint" id="updateTypeOfTradingPoint"></select><br>
                                         <input class="form-control" type="text" name="nameOfTradingPoint" id="updateNameOfTradingPoint"><br>
-                                        <input class="form-control" type="text" name="numberOfHalls" id="updateNumberOfHalls"><br>
-                                        <input class="form-control" type="text" name="sizeOfTheTradingPoint" id="updateSizeOfTheTradingPoint"><br>
-                                        <input class="form-control" type="text" name="leasePayments" id="updateLeasePayments"><br>
-                                        <input class="form-control" type="text" name="utilities" id="updateUtilities"><br>
-                                        <input class="form-control" type="text" name="numberOfCounters" id="updateNumberOfCounters"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfHalls" id="updateNumberOfHalls"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="sizeOfTheTradingPoint" id="updateSizeOfTheTradingPoint"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="leasePayments" id="updateLeasePayments"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="utilities" id="updateUtilities"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfCounters" id="updateNumberOfCounters"><br>
                                         <button type="button" class="btn btn-primary" ng-click="ctrl.updateTradingPoint()">Оновити</button>
                                         <br>
                                     </div>

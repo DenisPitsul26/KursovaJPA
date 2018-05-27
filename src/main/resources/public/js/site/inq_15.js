@@ -3,73 +3,39 @@ var app = angular.module("myinq_15", []);
 
 app.controller("inq_15", function ($http, $scope){
 
-
-    // var product_id = 1;
-    // var date = '2017-01-01';
-    // var amount = 3;
-    //
-    // $scope.providers = [];
-    // $http.get('/api/provider/getProvidersByTimerAndCount?product_id='+ product_id + "&timerStart="+ date + "&timerFinish="+ date + "&amount="+ amount).then(function (response){
-    //     $scope.providers = response.data;
-    // });
-    //
-    //
-    // //
-    // // $scope.providers = [];
-    // // $http.get('/api/provider/getProvidersByTimerAndCount?product_id='+ id + "&timer="+ date + "&amount="+ amount).then(function (response){
-    // //     $scope.providers = response.data;
-    // // });
-    //
-    //
-    // //
-    // $http.get('/api/type').then(function (response){
-    //     var types = response.data;
-    //     var selector = document.getElementById("Type");
-    //     $(selector).empty();
-    //     for (var i = 0; i < types.length; i++) {
-    //         var option = document.createElement("option");
-    //         option.text = types[i].name;
-    //         option.value = types[i].id;
-    //         selector.add(option);
-    //     }
-    // });
-    //
-    // $http.get('/api/provider').then(function (response){
-    //     var provider = response.data;
-    //     var selector = document.getElementById("Provider");
-    //     $(selector).empty();
-    //     for (var i = 0; i < provider.length; i++) {
-    //         var option = document.createElement("option");
-    //         option.text = provider[i].name;
-    //         option.value = provider[i].id;
-    //         selector.add(option);
-    //     }
-    // });
-
+    $http.get('/api/trading_point').then(function (response){
+        var tradingPoint = response.data;
+        console.log(response.data);
+        var selector = document.getElementById("tradingPoint");
+        $(selector).empty();
+        for (var i = 0; i < tradingPoint.length; i++) {
+            var option = document.createElement("option");
+            option.text = tradingPoint[i].nameOfTradingPoint;
+            option.value = tradingPoint[i].id;
+            selector.add(option);
+        }
+    });
 
     this.update_request = function add() {
 
-        // console.log("Start...");
+        console.log("Start...");
 
+        var indexOfTradingPoint = document.getElementById("tradingPoint").selectedIndex;
+        var tradingPointId = document.getElementById("tradingPoint").options[indexOfTradingPoint].value;
 
-        var start_time = document.getElementById("StartTime").value;
-        var finish_time = document.getElementById("FinishTime").value;
+        $scope.counts = [];
+        $http.get('/api/sold_goods/getAmountOfSoldGoodsByTradingPoint?tradingPointId=' + tradingPointId).then(function (response) {
+            $http.get('/api/trading_point/getSumLeasePaymentsAndUtilitiesByTradingPoint?tradingPointId=' + tradingPointId).then(function (response2) {
+                $http.get('/api/seller/getSumSallaryOfSellersByTradingPoint?tradingPointId=' + tradingPointId).then(function (response3) {
 
-        $scope.providers = [];
-        $http.get('/api/defect/getCountDefectByDay?startTime='+ start_time + "&finishTime=" + finish_time).then(function (response){
+                    console.log(response.data);
+                    console.log(response2.data);
+                    console.log(response3.data);
 
-            document.getElementById("Rezultat").innerText = response.data;
-
-            // document.getElementById("Rezultat").innerText = " ";
-            // $scope.providers = response.data;
-            //
-            // console.log($scope.providers.length);
-            //
-            // if ($scope.providers.length <= 0) {
-            //     document.getElementById("Rezultat").innerText = "Даної інформації в базі не знайдено";
-            // }
-
-
+                    document.getElementById("Rezultat").innerText = ((response.data / (response2.data+response3.data)).toFixed(5));
+                    console.log(response.data / (response2.data+response3.data));
+                });
+            });
         });
 
     };

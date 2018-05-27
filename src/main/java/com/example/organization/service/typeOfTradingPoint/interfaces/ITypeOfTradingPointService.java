@@ -1,4 +1,4 @@
-package com.example.organization.service.typeOfTradingPoint.goods.interfaces;
+package com.example.organization.service.typeOfTradingPoint.interfaces;
 
 import com.example.organization.model.TypeOfTradingPoint;
 

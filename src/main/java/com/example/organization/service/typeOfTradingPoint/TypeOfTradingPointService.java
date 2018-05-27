@@ -1,8 +1,8 @@
-package com.example.organization.service.typeOfTradingPoint.goods;
+package com.example.organization.service.typeOfTradingPoint;
 
 import com.example.organization.model.TypeOfTradingPoint;
 import com.example.organization.repository.TypeOfTradingPointRepository;
-import com.example.organization.service.typeOfTradingPoint.goods.interfaces.ITypeOfTradingPointService;
+import com.example.organization.service.typeOfTradingPoint.interfaces.ITypeOfTradingPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -62,4 +62,9 @@ public class SellerController {
     public List<Seller> getSallaryOfSellerByAllTradingPoint() throws SQLException {
         return sellerService.getSallaryOfSellerByAllTradingPoint();
     }
+
+    @RequestMapping("/seller/getSumSallaryOfSellersByTradingPoint")
+    public double getSumSallaryOfSellersByTradingPoint(@RequestParam("tradingPointId") int tradingPointId) throws SQLException {
+        return sellerService.getSumSallaryOfSellersByTradingPoint(tradingPointId);
+    }
 }

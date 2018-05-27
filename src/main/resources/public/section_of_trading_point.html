@@ -197,7 +197,7 @@
                                             <h4>Добавлення секції торгівельної точки:</h4>
                                             <select required class="form-control" type="text" name="tradingPoint" id="tradingPoint"></select><br>
                                             <select required class="form-control" type="text" name="section" id="section"></select><br>
-                                            <input class="form-control" type="text" name="numberOfHalls" id="numberOfHalls" placeholder="Кількість залів"><br>
+                                            <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfHalls" id="numberOfHalls" placeholder="Кількість залів"><br>
                                             <button type="button" class="btn btn-primary" ng-click="ctrl.insertSectionOfTradingPoint()">Добавити</button>
                                             <br>
                                         </div>
@@ -236,7 +236,7 @@
                                             <h4> ID <div id="updateId"></div> </h4>
                                             <select class="form-control" type="text" name="tradingPoint" id="updateTradingPoint"></select><br>
                                             <select class="form-control" type="text" name="section" id="updateSection"></select><br>
-                                            <input class="form-control" type="text" name="numberOfHalls" id="updateNumberOfHalls"><br>
+                                            <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfHalls" id="updateNumberOfHalls"><br>
                                             <button type="button" class="btn btn-primary" ng-click="ctrl.updateSectionOfTradingPoint()">Оновити</button>
                                             <br>
                                         </div>

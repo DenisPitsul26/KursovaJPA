@@ -69,4 +69,34 @@ public class SoldGoodsController {
     public List<SoldGoods> getSoldGoodsByGoodsAndDateOfSale(@RequestParam("goodsId") int goodsId, @RequestParam("startTime") Date startTime, @RequestParam("finishTime") Date finishTime) throws SQLException {
         return soldGoodsService.getSoldGoodsByGoodsAndDateOfSale(goodsId, startTime.toLocalDate(), finishTime.toLocalDate());
     }
+
+    @RequestMapping("/sold_goods/getTheMostActiveBuyersByAllTradingPoint")
+    public List<SoldGoods> getTheMostActiveBuyersByAllTradingPoint() throws SQLException {
+        return soldGoodsService.getTheMostActiveBuyersByAllTradingPoint();
+    }
+
+    @RequestMapping("/sold_goods/getTheMostActiveBuyersByTypeOfTradingPoint")
+    public List<SoldGoods> getTheMostActiveBuyersByTypeOfTradingPoint(@RequestParam("typeOfTradingPointId") int typeOfTradingPointId) throws SQLException {
+        return soldGoodsService.getTheMostActiveBuyersByTypeOfTradingPoint(typeOfTradingPointId);
+    }
+
+    @RequestMapping("/sold_goods/getCountOfSoldGoodsByTradingPoint")
+    public double getCountOfSoldGoodsByTradingPoint(@RequestParam("tradingPointId") int tradingPointId) throws SQLException {
+        return soldGoodsService.getCountOfSoldGoodsByTradingPoint(tradingPointId);
+    }
+
+    @RequestMapping("/sold_goods/getAmountOfSoldGoodsByTradingPoint")
+    public double getAmountOfSoldGoodsByTradingPoint(@RequestParam("tradingPointId") int tradingPointId) throws SQLException {
+        return soldGoodsService.getAmountOfSoldGoodsByTradingPoint(tradingPointId);
+    }
+
+    @RequestMapping("/sold_goods/getBuyerByTradingPointAndGoodsAndDateOfSale")
+    public List<SoldGoods> getBuyerByTradingPointAndGoodsAndDateOfSale(@RequestParam("typeOfTradingPointId") int typeOfTradingPointId, @RequestParam("goodsId") int goodsId, @RequestParam("startTime") Date startTime, @RequestParam("finishTime") Date finishTime) throws SQLException {
+        return soldGoodsService.getBuyerByTradingPointAndGoodsAndDateOfSale(typeOfTradingPointId, goodsId, startTime.toLocalDate(), finishTime.toLocalDate());
+    }
+
+    @RequestMapping("/sold_goods/getBuyerByGoodsAndDateOfSale")
+    public List<SoldGoods> getBuyerByGoodsAndDateOfSale(@RequestParam("goodsId") int goodsId, @RequestParam("startTime") Date startTime, @RequestParam("finishTime") Date finishTime) throws SQLException {
+        return soldGoodsService.getBuyerByGoodsAndDateOfSale(goodsId, startTime.toLocalDate(), finishTime.toLocalDate());
+    }
 }

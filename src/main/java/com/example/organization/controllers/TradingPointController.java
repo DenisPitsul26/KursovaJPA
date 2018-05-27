@@ -42,4 +42,14 @@ public class TradingPointController {
         tradingPoint.setId(id);
         return tradingPointService.updateTradingPoint(tradingPoint);
     }
+
+    @RequestMapping("/trading_point/getNumberOfCountersByTradingPoint")
+    public double getNumberOfCountersByTradingPoint(@RequestParam("tradingPointId") int tradingPointId) throws SQLException {
+        return tradingPointService.getNumberOfCountersByTradingPoint(tradingPointId);
+    }
+
+    @RequestMapping("/trading_point/getSumLeasePaymentsAndUtilitiesByTradingPoint")
+    public double getSumLeasePaymentsAndUtilitiesByTradingPoint(@RequestParam("tradingPointId") int tradingPointId) throws SQLException {
+        return tradingPointService.getSumLeasePaymentsAndUtilitiesByTradingPoint(tradingPointId);
+    }
 }

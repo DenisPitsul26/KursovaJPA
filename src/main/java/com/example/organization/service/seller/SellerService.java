@@ -58,4 +58,9 @@ public class SellerService implements ISellerService{
     public List<Seller> getSallaryOfSellerByAllTradingPoint() throws SQLException {
         return sellerRepository.getSallaryOfSellerByAllTradingPoint();
     }
+
+    @Override
+    public double getSumSallaryOfSellersByTradingPoint(int tradingPointId) throws SQLException {
+        return sellerRepository.getSumSallaryOfSellersByTradingPoint(tradingPointId);
+    }
 }

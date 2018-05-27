@@ -15,4 +15,9 @@ public interface ITradingPointService {
     public void deleteTradingPoint(int id) throws SQLException;
 
     public List<TradingPoint> getAll() throws SQLException;
+
+    double getNumberOfCountersByTradingPoint(int tradingPointId) throws SQLException;
+
+    double getSumLeasePaymentsAndUtilitiesByTradingPoint(int tradingPointId) throws SQLException;
+
 }

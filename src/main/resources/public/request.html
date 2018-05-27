@@ -212,12 +212,12 @@
                                     <div class="card-body">
                                         <hr>
                                         <h4>Добавлення заявки:</h4>
-                                        <input class="form-control" type="text" name="numberOfSoldGoods" id="numberRequest" placeholder="Номер заявки"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfSoldGoods" id="numberRequest" placeholder="Номер заявки"><br>
                                         <select required class="form-control" type="text" name="tradingPoint" id="tradingPoint"></select><br>
                                         <select required class="form-control" type="text" name="provider" id="provider"></select><br>
                                         <select required class="form-control" type="text" name="goods" id="goods"></select><br>
-                                        <input class="form-control" type="text" name="numberOfGoods" id="numberOfGoods" placeholder="Кількість товару або вага(кг)"><br>
-                                        <input class="form-control" type="text" name="price" id="price" placeholder="Ціна"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfGoods" id="numberOfGoods" placeholder="Кількість товару або вага(кг)"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="price" id="price" placeholder="Ціна"><br>
                                         <input class="form-control" type="text" onfocus="(this.type='date')" name="dateOfRequest" id="dateOfRequest" placeholder="Дата заявки"><br>
                                         <button type="button" class="btn btn-primary" ng-click="ctrl.insertRequest()">Добавити</button>
                                         <br>
@@ -265,12 +265,12 @@
                                         <hr>
                                         <h4>Оновлення заявки:</h4>
                                         <h4> ID <div id="updateId"></div> </h4>
-                                        <input class="form-control" type="text" name="numberRequest" id="updateNumberRequest"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberRequest" id="updateNumberRequest"><br>
                                         <select class="form-control" type="text" name="tradingPoint" id="updateTradingPoint"></select><br>
                                         <select class="form-control" type="text" name="provider" id="updateProvider"></select><br>
                                         <select class="form-control" type="text" name="goods" id="updateGoods"></select><br>
-                                        <input class="form-control" type="text" name="numberOfGoods" id="updateNumberOfGoods"><br>
-                                        <input class="form-control" type="text" name="price" id="updatePrice"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfGoods" id="updateNumberOfGoods"><br>
+                                        <input class="form-control" type="text" onfocus="(this.type='number')" name="price" id="updatePrice"><br>
                                         <input class="form-control" type="date" name="dateOfRequest" id="updateDateOfRequest"><br>
                                         <button type="button" class="btn btn-primary" ng-click="ctrl.updateRequest()">Оновити</button>
                                         <br>

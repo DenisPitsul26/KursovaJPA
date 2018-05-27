@@ -48,4 +48,14 @@ public class RequestController {
     public List<Request> getRequestByProviderAndGoods(@RequestParam("providerId") int providerId, @RequestParam("goodsId") int goodsId) throws SQLException {
         return requestService.getRequestByProviderAndGoods(providerId, goodsId);
     }
+
+    @RequestMapping("/request/getRequestByNumberRequest")
+    public List<Request> getRequestByNumberRequest(@RequestParam("numberRequest") int numberRequest) throws SQLException {
+        return requestService.getRequestByNumberRequest(numberRequest);
+    }
+
+    @RequestMapping("/request/getDifferentNumberRequest")
+    public List<Request> getDifferentNumberRequest() throws SQLException {
+        return requestService.getDifferentNumberRequest();
+    }
 }

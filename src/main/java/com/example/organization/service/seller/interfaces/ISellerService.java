@@ -23,4 +23,6 @@ public interface ISellerService {
     List<Seller> getSallaryOfSellerByTypeOfTradingPoint(int typeOfTradingPointId) throws SQLException;
 
     List<Seller> getSallaryOfSellerByAllTradingPoint() throws SQLException;
+
+    double getSumSallaryOfSellersByTradingPoint(int tradingPointId) throws SQLException;
 }

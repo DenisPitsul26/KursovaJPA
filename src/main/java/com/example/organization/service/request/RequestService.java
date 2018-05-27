@@ -46,4 +46,14 @@ public class RequestService implements IRequestService{
     public List<Request> getRequestByProviderAndGoods(int providerId, int goodsId) throws SQLException {
         return requestRepository.getRequestByProviderAndGoods(providerId, goodsId);
     }
+
+    @Override
+    public List<Request> getRequestByNumberRequest(int numberRequest) throws SQLException {
+        return requestRepository.getRequestByNumberRequest(numberRequest);
+    }
+
+    @Override
+    public List<Request> getDifferentNumberRequest() throws SQLException {
+        return requestRepository.getDifferentNumberRequest();
+    }
 }

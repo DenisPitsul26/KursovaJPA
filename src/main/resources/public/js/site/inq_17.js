@@ -3,78 +3,88 @@ var app = angular.module("myinq_17", []);
 
 app.controller("inq_17", function ($http, $scope){
 
-
-    var product_id = 1;
-    var date = '2017-01-01';
-    var amount = 3;
-
-    $scope.providers = [];
-    $http.get('/api/provider/getProvidersByTimerAndCount?product_id='+ product_id + "&timerStart="+ date + "&timerFinish="+ date + "&amount="+ amount).then(function (response){
-        $scope.providers = response.data;
-    });
-
-
-    //
-    // $scope.providers = [];
-    // $http.get('/api/provider/getProvidersByTimerAndCount?product_id='+ id + "&timer="+ date + "&amount="+ amount).then(function (response){
-    //     $scope.providers = response.data;
-    // });
-
-
-    //
-    $http.get('/api/type').then(function (response){
-        var types = response.data;
-        var selector = document.getElementById("Type");
+    $http.get('/api/type_of_trading_point').then(function (response){
+        var typeOfTradingPoint = response.data;
+        var selector = document.getElementById("typeOfTradingPoint");
+        var defaultOption = document.createElement("option");
+        defaultOption.value="";
+        defaultOption.text = "Виберіть тип торгівельної точки";
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
         $(selector).empty();
-        for (var i = 0; i < types.length; i++) {
+        for (var i = 0; i < typeOfTradingPoint.length; i++) {
             var option = document.createElement("option");
-            option.text = types[i].name;
-            option.value = types[i].id;
+            option.text = typeOfTradingPoint[i].typeOfTypeOfTradingPoint;
+            option.value = typeOfTradingPoint[i].id;
             selector.add(option);
         }
     });
 
-    $http.get('/api/provider').then(function (response){
-        var provider = response.data;
-        var selector = document.getElementById("Provider");
+    $http.get('/api/goods_of_trading_point').then(function (response){
+        var goodsOfTradingPointId = response.data;
+        var selector = document.getElementById("goodsOfTradingPoint");
         $(selector).empty();
-        for (var i = 0; i < provider.length; i++) {
+        for (var i = 0; i < goodsOfTradingPointId.length; i++) {
             var option = document.createElement("option");
-            option.text = provider[i].name;
-            option.value = provider[i].id;
+            option.text = goodsOfTradingPointId[i].goods.nameOfGoods;
+            option.value = goodsOfTradingPointId[i].id;
             selector.add(option);
         }
     });
-
 
     this.update_request = function add() {
-
         console.log("Start...");
 
-        var indexOfProduct = document.getElementById("Product").selectedIndex;
-        product_id = document.getElementById("Product").options[indexOfProduct].value;
+        var indexOfTypeOfTradingPoint = document.getElementById("typeOfTradingPoint").selectedIndex;
+        var typeOfTradingPointId = document.getElementById("typeOfTradingPoint").options[indexOfTypeOfTradingPoint].value;
+
+        var indexOfGoods = document.getElementById("goodsOfTradingPoint").selectedIndex;
+        var goodsId = document.getElementById("goodsOfTradingPoint").options[indexOfGoods].value;
 
         var start_time = document.getElementById("StartTime").value;
-        var finish_time = document.getElementById("StartTime").value;
+        var finish_time = document.getElementById("FinishTime").value;
 
-        var amount = document.getElementById("Amount").value;
-
-        $scope.providers = [];
-        $http.get('/api/provider/getProvidersByTimerAndCount?product_id=' + product_id + "&timerStart=" + date + "&timerFinish=" + date + "&amount=" + amount).then(function (response){
-
-
+        $scope.soldGoods = [];
+        $http.get('/api/sold_goods/getBuyerByTradingPointAndGoodsAndDateOfSale?typeOfTradingPointId=' + typeOfTradingPointId + "&goodsId="+ goodsId +"&startTime=" + start_time + "&finishTime=" + finish_time).then(function (response){
             document.getElementById("Rezultat").innerText = " ";
-            $scope.providers = response.data;
+            $scope.soldGoods = response.data;
 
-            console.log($scope.providers.length);
-
-            if ($scope.providers.length <= 0) {
+            if ($scope.soldGoods.length <= 0) {
                 document.getElementById("Rezultat").innerText = "Даної інформації в базі не знайдено";
             }
-
-
         });
 
     };
+
+    document.getElementById("typeOfTradingPoint").addEventListener("change", changeTypeOfTradingPointInsert);
+    function changeTypeOfTradingPointInsert() {
+        var indexTypeOfTradingPoint= document.getElementById("typeOfTradingPoint").selectedIndex;
+        var typeOfTradingPointId= document.getElementById("typeOfTradingPoint").options[indexTypeOfTradingPoint].value;
+
+        $http.get('/api/type_of_trading_point/get?id=' + typeOfTradingPointId).then(function (response) {
+            $scope.selectedTypeOfTradingPointInsert = response.data;
+        });
+
+        $http.get('/api/goods_of_trading_point').then(function (response) {
+            var goodsOfTradingPoint = response.data;
+            var selector = document.getElementById("goodsOfTradingPoint");
+
+            var defaultOption = document.createElement("option");
+            defaultOption.value="";
+            defaultOption.text = "Виберіть товар";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            $(selector).empty();
+            selector.add(defaultOption);
+            for (var i = 0; i < goodsOfTradingPoint.length; i++) {
+                if (goodsOfTradingPoint[i].tradingPoint.typeOfTradingPoint.id == $scope.selectedTypeOfTradingPointInsert.id) {
+                    var option = document.createElement("option");
+                    option.text = goodsOfTradingPoint[i].goods.nameOfGoods;
+                    option.value = goodsOfTradingPoint[i].id;
+                    selector.add(option);
+                }
+            }
+        });
+    }
 
 });

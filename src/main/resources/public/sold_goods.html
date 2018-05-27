@@ -215,9 +215,9 @@
                                             <select required class="form-control" type="text" name="seller" id="seller"></select><br>
                                             <select required class="form-control" type="text" name="buyer" id="buyer"></select><br>
                                             <select required class="form-control" type="text" name="goodsOfTradingPoint" id="goodsOfTradingPoint"></select><br>
-                                            <input class="form-control" type="text" name="numberOfSoldGoods" id="numberOfSoldGoods" placeholder="Кількість проданого товару або вага(кг)"><br>
+                                            <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfSoldGoods" id="numberOfSoldGoods" placeholder="Кількість проданого товару або вага(кг)"><br>
                                             <input class="form-control" type="text" onfocus="(this.type='date')" name="dateOfSale" id="dateOfSale" placeholder="Дата покупки"><br>
-                                            <input class="form-control" type="text" name="price" id="price" placeholder="Ціна"><br>
+                                            <input class="form-control" type="text" onfocus="(this.type='number')" name="price" id="price" placeholder="Ціна"><br>
                                             <button type="button" class="btn btn-primary" ng-click="ctrl.insertSoldGoods()">Добавити</button>
                                             <br>
                                         </div>
@@ -266,9 +266,9 @@
                                             <select class="form-control" type="text" name="seller" id="updateSeller"></select><br>
                                             <select class="form-control" type="text" name="buyer" id="updateBuyer"></select><br>
                                             <select class="form-control" type="text" name="goodsOfTradingPoint" id="updateGoodsOfTradingPoint"></select><br>
-                                            <input class="form-control" type="text" name="numberOfSoldGoods" id="updateNumberOfSoldGoods"><br>
+                                            <input class="form-control" type="text" onfocus="(this.type='number')" name="numberOfSoldGoods" id="updateNumberOfSoldGoods"><br>
                                             <input class="form-control" type="date" name="dateOfSale" id="updateDateOfSale"><br>
-                                            <input class="form-control" type="text" name="price" id="updatePrice"><br>
+                                            <input class="form-control" type="text" onfocus="(this.type='number')" name="price" id="updatePrice"><br>
                                             <button type="button" class="btn btn-primary" ng-click="ctrl.updateSoldGoods()">Оновити</button>
                                             <br>
                                         </div>
