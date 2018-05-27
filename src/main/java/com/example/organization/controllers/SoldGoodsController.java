@@ -55,6 +55,11 @@ public class SoldGoodsController {
         return soldGoodsService.getNumberOfSoldGoodsByTypeOfTradingPointAndDateOfSale(typeOfTradingPointId, startTime.toLocalDate(), finishTime.toLocalDate());
     }
 
+    @RequestMapping("/sold_goods/getNumberOfSoldGoodsByTradingPointAndSellerAndDateOfSale")
+    public double getNumberOfSoldGoodsByTradingPointAndSellerAndDateOfSale(@RequestParam("tradingPointId") int tradingPointId, @RequestParam("sellerId") int sellerId, @RequestParam("startTime") Date startTime, @RequestParam("finishTime") Date finishTime) throws SQLException {
+        return soldGoodsService.getNumberOfSoldGoodsByTradingPointAndSellerAndDateOfSale(tradingPointId, sellerId, startTime.toLocalDate(), finishTime.toLocalDate());
+    }
+
     @RequestMapping("/sold_goods/getSoldGoodsByTradingPointAndGoodsAndDateOfSale")
     public List<SoldGoods> getSoldGoodsByTradingPointAndGoodsAndDateOfSale(@RequestParam("tradingPointId") int tradingPointId, @RequestParam("goodsId") int goodsId, @RequestParam("startTime") Date startTime, @RequestParam("finishTime") Date finishTime) throws SQLException {
         return soldGoodsService.getSoldGoodsByTradingPointAndGoodsAndDateOfSale(tradingPointId, goodsId, startTime.toLocalDate(), finishTime.toLocalDate());

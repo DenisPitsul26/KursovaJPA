@@ -4,7 +4,6 @@ var app = angular.module("myinq_7", []);
 app.controller("inq_7", function ($http, $scope){
 
     $http.get('/api/type_of_trading_point').then(function (response){
-        console.log("ddddd");
         var type = response.data;
         console.log(response.data);
         var selector = document.getElementById("Type");

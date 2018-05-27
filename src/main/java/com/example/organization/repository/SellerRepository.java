@@ -16,4 +16,12 @@ public interface SellerRepository extends JpaRepository<Seller, Integer>{
     //7_2
     @Query("select count(sel.id) from Seller sel where sel.tradingPoint.typeOfTradingPoint.id = :typeOfTradingPointId")
     double getCountOfSellerByTypeOfTradingPointId(@Param("typeOfTradingPointId") int typeOfTradingPointId);
+
+    //11
+    @Query("select sel from Seller sel where sel.tradingPoint.typeOfTradingPoint.id = :typeOfTradingPointId")
+    List<Seller> getSallaryOfSellerByTypeOfTradingPoint(@Param("typeOfTradingPointId") int typeOfTradingPointId);
+
+    //12
+    @Query("select sel from Seller sel")
+    List<Seller> getSallaryOfSellerByAllTradingPoint();
 }

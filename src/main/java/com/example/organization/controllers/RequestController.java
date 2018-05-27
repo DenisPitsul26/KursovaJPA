@@ -43,4 +43,9 @@ public class RequestController {
         request.setId(id);
         return requestService.updateRequest(request);
     }
+
+    @RequestMapping("/request/getRequestByProviderAndGoods")
+    public List<Request> getRequestByProviderAndGoods(@RequestParam("providerId") int providerId, @RequestParam("goodsId") int goodsId) throws SQLException {
+        return requestService.getRequestByProviderAndGoods(providerId, goodsId);
+    }
 }

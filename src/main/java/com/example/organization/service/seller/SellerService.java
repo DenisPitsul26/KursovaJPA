@@ -48,4 +48,14 @@ public class SellerService implements ISellerService{
     public double getCountOfSellerByTypeOfTradingPointId(int typeOfTradingPointId) throws SQLException {
         return sellerRepository.getCountOfSellerByTypeOfTradingPointId(typeOfTradingPointId);
     }
+
+    @Override
+    public List<Seller> getSallaryOfSellerByTypeOfTradingPoint(int typeOfTradingPointId) throws SQLException {
+        return sellerRepository.getSallaryOfSellerByTypeOfTradingPoint(typeOfTradingPointId);
+    }
+
+    @Override
+    public List<Seller> getSallaryOfSellerByAllTradingPoint() throws SQLException {
+        return sellerRepository.getSallaryOfSellerByAllTradingPoint();
+    }
 }

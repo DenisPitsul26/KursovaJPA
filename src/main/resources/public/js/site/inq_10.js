@@ -3,7 +3,6 @@ var app = angular.module("myinq_10", []);
 
 app.controller("inq_10", function ($http, $scope){
 
-
     $http.get('/api/goods').then(function (response){
         var goods = response.data;
         var selector = document.getElementById("goods");

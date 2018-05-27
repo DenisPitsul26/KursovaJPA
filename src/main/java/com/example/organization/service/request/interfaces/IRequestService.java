@@ -17,4 +17,7 @@ public interface IRequestService {
     public void deleteRequest(int id) throws SQLException;
 
     public List<Request> getAll() throws SQLException;
+
+    List<Request> getRequestByProviderAndGoods(int providerId, int goodsId) throws SQLException;
+
 }

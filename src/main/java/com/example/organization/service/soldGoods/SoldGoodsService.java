@@ -51,6 +51,11 @@ public class SoldGoodsService implements ISoldGoodsService{
     }
 
     @Override
+    public double getNumberOfSoldGoodsByTradingPointAndSellerAndDateOfSale(int tradingPointId, int sellerId, LocalDate startTime, LocalDate finishTime) throws SQLException {
+        return soldGoodsRepository.getNumberOfSoldGoodsByTradingPointAndSellerAndDateOfSale(tradingPointId, sellerId, startTime, finishTime);
+    }
+
+    @Override
     public List<SoldGoods> getSoldGoodsByTradingPointAndGoodsAndDateOfSale(int tradingPointId, int goodsId, LocalDate startTime, LocalDate finishTime) throws SQLException {
         return soldGoodsRepository.getSoldGoodsByTradingPointAndGoodsAndDateOfSale(tradingPointId, goodsId, startTime, finishTime);
     }

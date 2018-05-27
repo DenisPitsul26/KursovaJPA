@@ -52,4 +52,14 @@ public class SellerController {
     public double getCountOfSellerByTypeOfTradingPointId(@RequestParam("typeOfTradingPointId") int typeOfTradingPointId) throws SQLException {
         return sellerService.getCountOfSellerByTypeOfTradingPointId(typeOfTradingPointId);
     }
+
+    @RequestMapping("/seller/getSallaryOfSellerByTypeOfTradingPoint")
+    public List<Seller> getSallaryOfSellerByTypeOfTradingPoint(@RequestParam("typeOfTradingPointId") int typeOfTradingPointId) throws SQLException {
+        return sellerService.getSallaryOfSellerByTypeOfTradingPoint(typeOfTradingPointId);
+    }
+
+    @RequestMapping("/seller/getSallaryOfSellerByAllTradingPoint")
+    public List<Seller> getSallaryOfSellerByAllTradingPoint() throws SQLException {
+        return sellerService.getSallaryOfSellerByAllTradingPoint();
+    }
 }

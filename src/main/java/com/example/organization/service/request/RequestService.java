@@ -41,4 +41,9 @@ public class RequestService implements IRequestService{
     public List<Request> getAll() throws SQLException {
         return requestRepository.findAll();
     }
+
+    @Override
+    public List<Request> getRequestByProviderAndGoods(int providerId, int goodsId) throws SQLException {
+        return requestRepository.getRequestByProviderAndGoods(providerId, goodsId);
+    }
 }

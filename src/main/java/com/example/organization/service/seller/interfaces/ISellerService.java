@@ -19,4 +19,8 @@ public interface ISellerService {
     double getCountOfSeller() throws SQLException;
 
     double getCountOfSellerByTypeOfTradingPointId(int typeOfTradingPointId) throws SQLException;
+
+    List<Seller> getSallaryOfSellerByTypeOfTradingPoint(int typeOfTradingPointId) throws SQLException;
+
+    List<Seller> getSallaryOfSellerByAllTradingPoint() throws SQLException;
 }
