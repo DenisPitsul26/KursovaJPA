@@ -82,22 +82,35 @@ app.controller("AppCtrl", function ($scope, $http) {
                         var selectedTradingPoint = response.data;
                         var selectedProvider = response1.data;
                         var selectedGoods = response2.data;
-                        var req = {
-                            method: 'POST',
-                            url: '/api/request/insert',
-                            data: {
-                                numberRequest: numberRequest,
-                                tradingPoint: selectedTradingPoint,
-                                provider: selectedProvider,
-                                goods: selectedGoods,
-                                numberOfGoods: numberOfGoods,
-                                price: price,
-                                dateOfRequest: dateOfRequest
+
+                        var regex0 = /^[0-9]+$/;
+                        if (regex0.test(numberRequest)) {
+                            var regex = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                            if (regex.test(price)) {
+                                var regex2 = /^[0-9]+$/;
+                                if (regex2.test(numberOfGoods)) {
+                                    var req = {
+                                        method: 'POST',
+                                        url: '/api/request/insert',
+                                        data: {
+                                            numberRequest: numberRequest,
+                                            tradingPoint: selectedTradingPoint,
+                                            provider: selectedProvider,
+                                            goods: selectedGoods,
+                                            numberOfGoods: numberOfGoods,
+                                            price: price,
+                                            dateOfRequest: dateOfRequest
+                                        }
+                                    };
+                                    $http(req).then(function (resp) {
+                                        window.location.reload();
+                                    })
+                                }
+                                else alert("Поле 'Кількість товару' заповнене не коректно. (Приклад 14)");
                             }
-                        };
-                        $http(req).then(function (resp) {
-                            window.location.reload();
-                        })
+                            else alert("Поле 'Ціна' заповнене не коректно. (Приклад 22.5)");
+                        }
+                        else alert("Поле 'Номер заявки' заповнене не коректно. (Приклад 25)");
                     });
             });
         });
@@ -182,22 +195,35 @@ app.controller("AppCtrl", function ($scope, $http) {
                         var selectedTradingPoint = response.data;
                         var selectedProvider = response1.data;
                         var selectedGoods = response2.data;
-                        var req = {
-                            method: 'POST',
-                            url: 'api/request/update?id=' + id,
-                            data: {
-                                numberRequest: numberRequest,
-                                tradingPoint: selectedTradingPoint,
-                                provider: selectedProvider,
-                                goods: selectedGoods,
-                                numberOfGoods: numberOfGoods,
-                                price: price,
-                                dateOfRequest: dateOfRequest
+
+                        var regex0 = /^[0-9]+$/;
+                        if (regex0.test(numberRequest)) {
+                            var regex = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                            if(regex.test(price)) {
+                                var regex2 = /^[0-9]+$/;
+                                if (regex2.test(numberOfGoods)) {
+                                    var req = {
+                                        method: 'POST',
+                                        url: 'api/request/update?id=' + id,
+                                        data: {
+                                            numberRequest: numberRequest,
+                                            tradingPoint: selectedTradingPoint,
+                                            provider: selectedProvider,
+                                            goods: selectedGoods,
+                                            numberOfGoods: numberOfGoods,
+                                            price: price,
+                                            dateOfRequest: dateOfRequest
+                                        }
+                                    };
+                                    $http(req).then(function (resp) {
+                                        window.location.reload();
+                                    })
+                                }
+                                else alert("Поле 'Кількість товару' заповнене не коректно. (Приклад 14)");
                             }
-                        };
-                        $http(req).then(function (resp) {
-                            window.location.reload();
-                        })
+                            else alert("Поле 'Ціна' заповнене не коректно. (Приклад 22.5)");
+                        }
+                        else alert("Поле 'Номер заявки' заповнене не коректно. (Приклад 25)");
                     });
             });
         });

@@ -52,34 +52,27 @@ app.controller("AppCtrl", function ($scope, $http) {
 
         var numberOfHalls = document.getElementById("numberOfHalls").value;
 
-        /*var req = {
-            method: 'POST',
-            url: '/api/section_of_trading_point/insert',
-            data: {
-                tradingPoint: tradingPointId,
-                section: sectionId,
-                numberOfHalls: numberOfHalls
-            }
-        };
-        $http(req).then(function (resp) {
-            window.location.reload();
-        })*/
         $http.get('/api/trading_point/get?id='+tradingPointId).then(function (response) {
             $http.get('/api/section/get?id='+sectionId).then(function (response1) {
                 var selectedTradingPoint = response.data;
                 var selectedSection = response1.data;
-                var req = {
-                    method: 'POST',
-                    url: '/api/section_of_trading_point/insert',
-                    data: {
-                        tradingPoint: selectedTradingPoint,
-                        section: selectedSection,
-                        numberOfHalls: numberOfHalls
-                    }
-                };
-                $http(req).then(function (resp) {
-                    window.location.reload();
-                })
+
+                var regex = /^[0-9]+$/;
+                if (regex.test(numberOfHalls)) {
+                    var req = {
+                        method: 'POST',
+                        url: '/api/section_of_trading_point/insert',
+                        data: {
+                            tradingPoint: selectedTradingPoint,
+                            section: selectedSection,
+                            numberOfHalls: numberOfHalls
+                        }
+                    };
+                    $http(req).then(function (resp) {
+                        window.location.reload();
+                    })
+                }
+                else alert("Поле 'Кількість залів' заповнене не коректно. (Приклад 5)");
             });
         });
     };
@@ -138,18 +131,23 @@ app.controller("AppCtrl", function ($scope, $http) {
             $http.get('/api/section/get?id=' + sectionId).then(function (response1) {
                 var selectedTradingPoint = response.data;
                 var selectedSection = response1.data;
-                var req = {
-                    method: 'POST',
-                    url: 'api/section_of_trading_point/update?id=' + id,
-                    data: {
-                        tradingPoint: selectedTradingPoint,
-                        section: selectedSection,
-                        numberOfHalls: numberOfHalls
-                    }
-                };
-                $http(req).then(function (resp) {
-                    window.location.reload();
-                })
+
+                var regex = /^[0-9]+$/;
+                if (regex.test(numberOfHalls)) {
+                    var req = {
+                        method: 'POST',
+                        url: 'api/section_of_trading_point/update?id=' + id,
+                        data: {
+                            tradingPoint: selectedTradingPoint,
+                            section: selectedSection,
+                            numberOfHalls: numberOfHalls
+                        }
+                    };
+                    $http(req).then(function (resp) {
+                        window.location.reload();
+                    })
+                }
+                else alert("Поле 'Кількість залів' заповнене не коректно. (Приклад 5)");
             });
         });
     };

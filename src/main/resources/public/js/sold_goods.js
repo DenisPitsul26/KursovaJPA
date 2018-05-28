@@ -106,23 +106,32 @@ app.controller("AppCtrl", function ($scope, $http) {
                         var selectedSeller = response1.data;
                         var selectedBuyer = response2.data;
                         var selectedGoodsOfTradingPoint = response3.data;
-                        var req = {
-                            method: 'POST',
-                            url: '/api/sold_goods/insert',
-                            data: {
-                                tradingPoint: selectedTradingPoint,
-                                seller: selectedSeller,
-                                buyer: selectedBuyer,
-                                goodsOfTradingPoint: selectedGoodsOfTradingPoint,
-                                numberOfSoldGoods: numberOfSoldGoods,
-                                dateOfSale: dateOfSale,
-                                price: price
+
+                        var regex = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                        if(regex.test(price)) {
+                            var regex2 = /^[0-9]+$/;
+                            if (regex2.test(numberOfSoldGoods)) {
+                                var req = {
+                                    method: 'POST',
+                                    url: '/api/sold_goods/insert',
+                                    data: {
+                                        tradingPoint: selectedTradingPoint,
+                                        seller: selectedSeller,
+                                        buyer: selectedBuyer,
+                                        goodsOfTradingPoint: selectedGoodsOfTradingPoint,
+                                        numberOfSoldGoods: numberOfSoldGoods,
+                                        dateOfSale: dateOfSale,
+                                        price: price
+                                    }
+                                };
+                                var time = performance.now();
+                                $http(req).then(function (resp) {
+                                    window.location.reload();
+                                })
                             }
-                        };
-                        var time = performance.now();
-                        $http(req).then(function (resp) {
-                            window.location.reload();
-                        })
+                            else alert("Поле 'Кількість проданого товару' заповнене не коректно. (Приклад 14)");
+                        }
+                        else alert("Поле 'Ціна' заповнене не коректно. (Приклад 22.5)");
                     });
                 });
             });
@@ -232,22 +241,31 @@ app.controller("AppCtrl", function ($scope, $http) {
                         var selectedSeller = response1.data;
                         var selectedBuyer = response2.data;
                         var selectedGoodsOfTradingPoint = response3.data;
-                        var req = {
-                            method: 'POST',
-                            url: 'api/sold_goods/update?id=' + id,
-                            data: {
-                                tradingPoint: selectedTradingPoint,
-                                seller: selectedSeller,
-                                buyer: selectedBuyer,
-                                goodsOfTradingPoint: selectedGoodsOfTradingPoint,
-                                numberOfSoldGoods: numberOfSoldGoods,
-                                dateOfSale: dateOfSale,
-                                price: price
+
+                        var regex = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                        if(regex.test(price)) {
+                            var regex2 = /^[0-9]+$/;
+                            if (regex2.test(numberOfSoldGoods)) {
+                                var req = {
+                                    method: 'POST',
+                                    url: 'api/sold_goods/update?id=' + id,
+                                    data: {
+                                        tradingPoint: selectedTradingPoint,
+                                        seller: selectedSeller,
+                                        buyer: selectedBuyer,
+                                        goodsOfTradingPoint: selectedGoodsOfTradingPoint,
+                                        numberOfSoldGoods: numberOfSoldGoods,
+                                        dateOfSale: dateOfSale,
+                                        price: price
+                                    }
+                                };
+                                $http(req).then(function (resp) {
+                                    window.location.reload();
+                                })
                             }
-                        };
-                        $http(req).then(function (resp) {
-                            window.location.reload();
-                        })
+                            else alert("Поле 'Кількість проданого товару' заповнене не коректно. (Приклад 14)");
+                        }
+                        else alert("Поле 'Ціна' заповнене не коректно. (Приклад 22.5)");
                     });
                 });
             });

@@ -146,51 +146,43 @@
             <nav id="primary-nav">
                 <ul>
                     <li>
-                        <a href="#"><i class="fa fa-table"></i>Таблиці</a>
-                        <ul>
-                            <li>
-                                <a href="buyer.html"><i class="fa fa-file-text"></i>Покупці</a>
-                            </li>
-                            <li>
-                                <a href="goods.html"><i class="fa fa-file-text"></i>Товари</a>
-                            </li>
-                            <li>
-                                <a href="goods_of_trading_point.html"><i class="fa fa-file-text"></i>Товари торгівельних точок</a>
-                            </li>
-                            <li>
-                                <a href="provider.html"><i class="fa fa-file-text"></i>Постачальники</a>
-                            </li>
-                            <li>
-                                <a href="request.html"><i class="fa fa-file-text"></i>Заявки</a>
-                            </li>
-                            <li>
-                                <a href="section.html"><i class="fa fa-file-text"></i>Секції</a>
-                            </li>
-                            <li>
-                                <a href="section_of_trading_point.html"><i class="fa fa-file-text"></i>Секції торгівельних точок</a>
-                            </li>
-                            <li>
-                                <a href="seller.html"><i class="fa fa-file-text"></i>Продавці</a>
-                            </li>
-                            <li>
-                                <a href="sold_goods.html"><i class="fa fa-file-text"></i>Продані товари</a>
-                            </li>
-                            <li>
-                                <a href="trading_point.html"><i class="fa fa-file-text"></i>Торгівельні точки</a>
-                            </li>
-                            <li>
-                                <a href="type_of_trading_point.html"><i class="fa fa-file-text"></i>Типи торгівельних точок</a>
-                            </li>
-                        </ul>
+                        <a href="../index.html">Головна </a>
                     </li>
-
                     <li>
-                        <a href="#"><i class="fa fa-question-circle"></i>Запроси</a>
-                        <ul>
-                            <li>
-                                <a href="buyer.html"><i class="fa fa-file-text"></i>Покупці</a>
-                            </li>
-                        </ul>
+                        <a href="../titulka.html">Титулка</a>
+                    </li>
+                    <li>
+                        <a href="../buyer.html">Покупці</a>
+                    </li>
+                    <li>
+                        <a href="../goods.html">Товари</a>
+                    </li>
+                    <li>
+                        <a href="../goods_of_trading_point.html">Товари торгівельних точок</a>
+                    </li>
+                    <li>
+                        <a href="../provider.html">Постачальники</a>
+                    </li>
+                    <li>
+                        <a href="../request.html">Заявки</a>
+                    </li>
+                    <li>
+                        <a href="../section.html"></i>Секції</a>
+                    </li>
+                    <li>
+                        <a href="../section_of_trading_point.html">Секції торгівельних точок</a>
+                    </li>
+                    <li>
+                        <a href="../seller.html">Продавці</a>
+                    </li>
+                    <li>
+                        <a href="../sold_goods.html">Продані товари</a>
+                    </li>
+                    <li>
+                        <a href="../trading_point.html">Торгівельні точки</a>
+                    </li>
+                    <li>
+                        <a href="../type_of_trading_point.html">Типи торгівельних точок</a>
                     </li>
                 </ul>
             </nav>
@@ -250,7 +242,7 @@
                                     <td>{{item.dateOfSale}}</td>
                                     <td>{{item.price}}</td>
                                     <td class="text-right">
-                                        <button type="button" class="btn btn-warning" ng-click="ctrl.startUpdateSoldGoods(item.id, item.tradingPoint, item.seller, item.buyer, item.goodsOfTradingPoint, item.numberOfSoldGoods, item.dateOfSale, item.price)" data-toggle="collapse" data-target="#collapseThreeUpdate" aria-expanded="false" aria-controls="collapseThree" type="button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                                        <button style="background: purple; border-color: purple" type="button" class="btn btn-warning" ng-click="ctrl.startUpdateSoldGoods(item.id, item.tradingPoint, item.seller, item.buyer, item.goodsOfTradingPoint, item.numberOfSoldGoods, item.dateOfSale, item.price)" data-toggle="collapse" data-target="#collapseThreeUpdate" aria-expanded="false" aria-controls="collapseThree" type="button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-danger" ng-click="ctrl.deleteSoldGoods(item.id)"><i class="fa fa-remove"></i></button>
                                     </td>
                                 </tr>

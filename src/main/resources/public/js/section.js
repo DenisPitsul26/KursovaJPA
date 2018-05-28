@@ -8,17 +8,23 @@ app.controller("AppCtrl", function ($scope, $http) {
 
     this.insertSection = function () {
         var name = document.getElementById("name").value;
-        var req = {
-            method: 'POST',
-            url: '/api/section/insert',
-            data: {
-                typeOfSection: name
-            }
-        };
-        console.log(req);
-        $http(req).then(function (resp) {
-            window.location.reload();
-        })
+        var regex =/^[А-ЯІ]([а-яА-ЯіІ]|[- ]?)*$/;
+        if(regex.test(name)) {
+            var req = {
+                method: 'POST',
+                url: '/api/section/insert',
+                data: {
+                    typeOfSection: name
+                }
+            };
+            console.log(req);
+            $http(req).then(function (resp) {
+                window.location.reload();
+            })
+        }
+        else {
+            alert("Поле 'Тип секції' заповнене не коректно. (Перша буква велика, мова Українська, допустимі символи ' ' або '-')")
+        }
     };
 
     this.deleteSection = function (id) {
@@ -35,16 +41,22 @@ app.controller("AppCtrl", function ($scope, $http) {
     this.updateSection = function update() {
         var id = document.getElementById("updateId").innerText;
         var name = document.getElementById("updateName").value;
-        var req = {
-            method: 'POST',
-            url: "/api/section/update?id="+id,
-            data: {
-                typeOfSection: name
-            }
-        };
-        // console.log(req);
-        $http(req).then(function (resp) {
-            window.location.reload();
-        });
+        var regex =/^[А-ЯІ]([а-яА-ЯіІ]|[- ]?)*$/;
+        if(regex.test(name)) {
+            var req = {
+                method: 'POST',
+                url: "/api/section/update?id="+id,
+                data: {
+                    typeOfSection: name
+                }
+            };
+            // console.log(req);
+            $http(req).then(function (resp) {
+                window.location.reload();
+            });
+        }
+        else {
+            alert("Поле 'Тип секції' заповнене не коректно. (Перша буква велика, мова Українська, допустимі символи ' ' або '-')")
+        }
     };
 });

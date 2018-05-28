@@ -35,20 +35,31 @@ app.controller("AppCtrl", function ($scope, $http) {
         var dateStarOfWork = document.getElementById("dateStarOfWork").value;
 
         $http.get('/api/trading_point/get?id='+tradingPointId).then(function (response) {
-                var selectedTradingPoint = response.data;
-                var req = {
-                    method: 'POST',
-                    url: '/api/seller/insert',
-                    data: {
-                        tradingPoint: selectedTradingPoint,
-                        nameOfSeller: nameOfSeller,
-                        sallary: sallary,
-                        dateStarOfWork: dateStarOfWork
-                    }
-                };
-                $http(req).then(function (resp) {
-                    window.location.reload();
-                })
+            var selectedTradingPoint = response.data;
+
+            var regex =/^[А-ЯІ]([а-яА-ЯіІ]|[- ]?)*$/;
+            if(regex.test(nameOfSeller)) {
+                var regex2 = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                if (regex2.test(sallary)) {
+                    var req = {
+                        method: 'POST',
+                        url: '/api/seller/insert',
+                        data: {
+                            tradingPoint: selectedTradingPoint,
+                            nameOfSeller: nameOfSeller,
+                            sallary: sallary,
+                            dateStarOfWork: dateStarOfWork
+                        }
+                    };
+                    $http(req).then(function (resp) {
+                        window.location.reload();
+                    })
+                }
+                else alert("Поле 'Зарплата' заповнене не коректно. (Приклад 3500)");
+            }
+            else {
+                alert("Поле 'Ім'я продавця' заповнене не коректно. (Перша буква велика, Мова Українська, Допустимий символи ' ' або '-')\"")
+            }
         });
     };
 
@@ -92,19 +103,30 @@ app.controller("AppCtrl", function ($scope, $http) {
 
         $http.get('/api/trading_point/get?id='+tradingPointId).then(function (response) {
                 var selectedTradingPoint = response.data;
-                var req = {
-                    method: 'POST',
-                    url: 'api/seller/update?id=' + id,
-                    data: {
-                        tradingPoint: selectedTradingPoint,
-                        nameOfSeller: nameOfSeller,
-                        sallary: sallary,
-                        dateStarOfWork: dateStarOfWork
-                    }
-                };
-                $http(req).then(function (resp) {
-                    window.location.reload();
-                })
+
+            var regex =/^[А-ЯІ]([а-яА-ЯіІ]|[- ]?)*$/;
+            if(regex.test(nameOfSeller)) {
+                var regex2 = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                if (regex2.test(sallary)) {
+                    var req = {
+                        method: 'POST',
+                        url: 'api/seller/update?id=' + id,
+                        data: {
+                            tradingPoint: selectedTradingPoint,
+                            nameOfSeller: nameOfSeller,
+                            sallary: sallary,
+                            dateStarOfWork: dateStarOfWork
+                        }
+                    };
+                    $http(req).then(function (resp) {
+                        window.location.reload();
+                    })
+                }
+                else alert("Поле 'Зарплата' заповнене не коректно. (Приклад 3500)");
+            }
+            else {
+                alert("Поле 'Ім'я продавця' заповнене не коректно. (Перша буква велика, Мова Українська, Допустимий символи ' ' або '-')\"")
+            }
         });
     };
 });

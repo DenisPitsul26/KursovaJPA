@@ -8,17 +8,24 @@ app.controller("AppCtrl", function ($scope, $http) {
 
     this.insertTypeOfTradingPoint = function () {
         var type1 = document.getElementById("type1").value;
-        var req = {
-            method: 'POST',
-            url: '/api/type_of_trading_point/insert',
-            data: {
-                typeOfTypeOfTradingPoint: type1
-            }
-        };
-        console.log(req);
-        $http(req).then(function (resp) {
-            window.location.reload();
-        })
+
+        var regex =/^[А-ЯІ]([а-яА-ЯіІ]|[- ]?)*$/;
+        if(regex.test(type1)) {
+            var req = {
+                method: 'POST',
+                url: '/api/type_of_trading_point/insert',
+                data: {
+                    typeOfTypeOfTradingPoint: type1
+                }
+            };
+            console.log(req);
+            $http(req).then(function (resp) {
+                window.location.reload();
+            })
+        }
+        else {
+            alert("Поле 'Тип торгівельної точки' заповнене не коректно. (Перша буква велика, мова Українська, допустимі символи ' ' або '-')")
+        }
     };
 
     this.deleteTypeOfTradingPoint = function (id) {
@@ -35,16 +42,23 @@ app.controller("AppCtrl", function ($scope, $http) {
     this.updateTypeOfTradingPoint = function update() {
         var id = document.getElementById("updateId").innerText;
         var type1 = document.getElementById("updateType").value;
-        var req = {
-            method: 'POST',
-            url: "/api/type_of_trading_point/update?id="+id,
-            data: {
-                typeOfTypeOfTradingPoint: type1
-            }
-        };
-        // console.log(req);
-        $http(req).then(function (resp) {
-            window.location.reload();
-        });
+
+        var regex =/^[А-ЯІ]([а-яА-ЯіІ]|[- ]?)*$/;
+        if(regex.test(type1)) {
+            var req = {
+                method: 'POST',
+                url: "/api/type_of_trading_point/update?id="+id,
+                data: {
+                    typeOfTypeOfTradingPoint: type1
+                }
+            };
+            // console.log(req);
+            $http(req).then(function (resp) {
+                window.location.reload();
+            });
+        }
+        else {
+            alert("Поле 'Тип торгівельної точки' заповнене не коректно. (Перша буква велика, мова Українська, допустимі символи ' ' або '-')")
+        }
     };
 });

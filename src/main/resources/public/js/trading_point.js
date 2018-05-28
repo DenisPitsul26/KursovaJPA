@@ -39,22 +39,47 @@ app.controller("AppCtrl", function ($scope, $http) {
 
         $http.get('/api/type_of_trading_point/get?id='+typeOfTradingPointId).then(function (response) {
             var selectedTypeOfTradingPoint = response.data;
-            var req = {
-                method: 'POST',
-                url: '/api/trading_point/insert',
-                data: {
-                    typeOfTradingPoint: selectedTypeOfTradingPoint,
-                    nameOfTradingPoint: nameOfTradingPoint,
-                    numberOfHalls: numberOfHalls,
-                    sizeOfTheTradingPoint: sizeOfTheTradingPoint,
-                    leasePayments: leasePayments,
-                    utilities: utilities,
-                    numberOfCounters: numberOfCounters
+
+            var regex = /^[А-ЯІ]([а-яА-ЯіІ]|[- ]?)*$/;
+            if (regex.test(nameOfTradingPoint)) {
+                var regex1 = /^[0-9]+$/;
+                if(regex1.test(numberOfHalls)) {
+                    var regex2 = /^[0-9]+$/;
+                    if (regex2.test(sizeOfTheTradingPoint)) {
+                        var regex3 = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                        if (regex3.test(leasePayments)) {
+                            var regex4 = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                            if(regex4.test(utilities)) {
+                                var regex5 = /^[0-9]+$/;
+                                if (regex5.test(numberOfCounters)) {
+                                    var req = {
+                                        method: 'POST',
+                                        url: '/api/trading_point/insert',
+                                        data: {
+                                            typeOfTradingPoint: selectedTypeOfTradingPoint,
+                                            nameOfTradingPoint: nameOfTradingPoint,
+                                            numberOfHalls: numberOfHalls,
+                                            sizeOfTheTradingPoint: sizeOfTheTradingPoint,
+                                            leasePayments: leasePayments,
+                                            utilities: utilities,
+                                            numberOfCounters: numberOfCounters
+                                        }
+                                    };
+                                    $http(req).then(function (resp) {
+                                        window.location.reload();
+                                    })
+                                }
+                                else alert("Поле 'Кількість Прилавків' заповнене не коректно. (Приклад 16)");
+                            }
+                            else alert("Поле 'Комунальні послуги' заповнене не коректно. (Приклад 550.5)");
+                        }
+                        else alert("Поле 'Оплата за оренду' заповнене не коректно. (Приклад 1450.5)");
+                    }
+                    else alert("Поле 'Розмір торгівельної точки' заповнене не коректно. (Приклад 350)");
                 }
-            };
-            $http(req).then(function (resp) {
-                window.location.reload();
-            })
+                else alert("Поле 'Кількість залів' заповнене не коректно. (Приклад 6)");
+            }
+            else alert("Поле 'Назва торгівельної точки' заповнене не коректно. (Перша буква велика, мова Українська, допустимі символи ' ' або '-')");
         });
     };
 
@@ -102,22 +127,47 @@ app.controller("AppCtrl", function ($scope, $http) {
         var numberOfCounters = document.getElementById("updateNumberOfCounters").value;
         $http.get('/api/type_of_trading_point/get?id='+typeOfTradingPointId).then(function (response) {
             var selectedTypeOfTradingPoint = response.data;
-            var req = {
-                method: 'POST',
-                url: 'api/trading_point/update?id='+id,
-                data: {
-                    typeOfTradingPoint: selectedTypeOfTradingPoint,
-                    nameOfTradingPoint: nameOfTradingPoint,
-                    numberOfHalls: numberOfHalls,
-                    sizeOfTheTradingPoint: sizeOfTheTradingPoint,
-                    leasePayments: leasePayments,
-                    utilities: utilities,
-                    numberOfCounters: numberOfCounters
+
+            var regex = /^[А-ЯІ]([а-яА-ЯіІ]|[- ]?)*$/;
+            if (regex.test(nameOfTradingPoint)) {
+                var regex1 = /^[0-9]+$/;
+                if(regex1.test(numberOfHalls)) {
+                    var regex2 = /^[0-9]+$/;
+                    if (regex2.test(sizeOfTheTradingPoint)) {
+                        var regex3 = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                        if (regex3.test(leasePayments)) {
+                            var regex4 = /^([0-9]+[\\.][0-9]+)|[0-9]+$/;
+                            if(regex4.test(utilities)) {
+                                var regex5 = /^[0-9]+$/;
+                                if (regex5.test(numberOfCounters)) {
+                                    var req = {
+                                        method: 'POST',
+                                        url: 'api/trading_point/update?id='+id,
+                                        data: {
+                                            typeOfTradingPoint: selectedTypeOfTradingPoint,
+                                            nameOfTradingPoint: nameOfTradingPoint,
+                                            numberOfHalls: numberOfHalls,
+                                            sizeOfTheTradingPoint: sizeOfTheTradingPoint,
+                                            leasePayments: leasePayments,
+                                            utilities: utilities,
+                                            numberOfCounters: numberOfCounters
+                                        }
+                                    };
+                                    $http(req).then(function (resp) {
+                                        window.location.reload();
+                                    })
+                                }
+                                else alert("Поле 'Кількість Прилавків' заповнене не коректно. (Приклад 16)");
+                            }
+                            else alert("Поле 'Комунальні послуги' заповнене не коректно. (Приклад 550.5)");
+                        }
+                        else alert("Поле 'Оплата за оренду' заповнене не коректно. (Приклад 1450.5)");
+                    }
+                    else alert("Поле 'Розмір торгівельної точки' заповнене не коректно. (Приклад 350)");
                 }
-            };
-            $http(req).then(function (resp) {
-                window.location.reload();
-            })
+                else alert("Поле 'Кількість залів' заповнене не коректно. (Приклад 6)");
+            }
+            else alert("Поле 'Назва торгівельної точки' заповнене не коректно. (Перша буква велика, мова Українська, допустимі символи ' ' або '-')");
         });
     };
 

@@ -24,20 +24,21 @@ app.controller("inq_2", function ($http, $scope){
 
         var number = document.getElementById("number").value;
 
-        console.log(goods_id);
-        console.log(number);
+        var regex2 = /^[0-9]+$/;
+        if (regex2.test(number)) {
+            $scope.buyers = [];
+            $http.get('/api/buyer/getBuyerByGoodsAndNumberOfSoldGoods?goods_id=' + goods_id + "&number=" + number).then(function (response){
+                document.getElementById("Rezultat").innerText = " ";
+                $scope.buyers = response.data;
 
-        $scope.buyers = [];
-        $http.get('/api/buyer/getBuyerByGoodsAndNumberOfSoldGoods?goods_id=' + goods_id + "&number=" + number).then(function (response){
-            document.getElementById("Rezultat").innerText = " ";
-            $scope.buyers = response.data;
+                console.log($scope.buyers.length);
 
-            console.log($scope.buyers.length);
-
-            if ($scope.buyers.length <= 0) {
-                document.getElementById("Rezultat").innerText = "Даної інформації в базі не знайдено";
-            }
-        });
+                if ($scope.buyers.length <= 0) {
+                    document.getElementById("Rezultat").innerText = "Даної інформації в базі не знайдено";
+                }
+            });
+        }
+        else alert("Поле 'Кількість товару' заповнене не коректно. (Приклад 14)");
 
     };
 
