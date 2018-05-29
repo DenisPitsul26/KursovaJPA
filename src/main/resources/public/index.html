@@ -1,94 +1,10 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Provider</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body ng-app="provider">
-<div class="container" style="margin-top: 30px" ng-controller="AppCtrl as ctrl">
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4>
-                    Постачальники
-                    <button data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" type="button" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                </h4>
-                <div id="accordion">
-                    <div class="card">
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                <hr>
-                                <h4>Добавлення постачальника:</h4>
-                                <input class="form-control" type="text" name="name" id="name" placeholder="Ім'я постачальника"><br>
-                                <input class="form-control" type="text" name="phone" id="phone" placeholder="Номер телефону"><br>
-                                <button type="button" class="btn btn-primary" ng-click="ctrl.insertProvider()">Добавити</button>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="panel-body">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Ім'я постачальника</th>
-                        <th>Номер телефону</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="item in provider">
-                            <td>{{item.id}}</td>
-                            <td>{{item.nameOfProvider}}</td>
-                            <td>{{item.phone}}</td>
-                            <td class="text-right">
-                                <button type="button" class="btn btn-warning" ng-click="ctrl.startUpdate(item.id,item.nameOfProvider,item.phone)" data-toggle="collapse" data-target="#collapseThreeUpdate" aria-expanded="false" aria-controls="collapseThree" type="button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger" ng-click="ctrl.deleteProvider(item.id)"><i class="fa fa-remove"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div id="accordionUpdate">
-                    <div class="card">
-                        <div id="collapseThreeUpdate" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                <hr>
-                                <h4>Оновлення постачальника:</h4>
-                                <h4> ID <div id="updateId"></div> </h4>
-                                <input class="form-control" type="text" name="name" id="updateName"><br>
-                                <input class="form-control" type="text" name="phone" id="updatePhone"><br>
-                                <button type="button" class="btn btn-primary" ng-click="ctrl.updateProvider()">Оновити</button>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-        </div>
-    </div>
-</div>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/provider.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-</body>
-</html>-->
-
 <!DOCTYPE html>
 <html class="no-js lt-ie9">
 <html class="no-js">
-<head >
+<head>
     <meta charset="utf-8">
 
-    <title>Main</title>
+    <title>Titulka</title>
 
     <meta name="description" content="uAdmin is a Professional, Responsive and Flat Admin Template created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">
@@ -119,9 +35,9 @@
 <div id="page-container">
     <header class="navbar navbar-inverse">
         <!--<div style="width: 50px; height: 20px">
-            <a href="index.html" class="navbar-brand"><img style="width: 29px; height: 29px" src="img/template/database-logo.png" alt="logo"></a>
+            <a href="index1.html" class="navbar-brand"><img style="width: 29px; height: 29px" src="img/template/database-logo.png" alt="logo"></a>
         </div>-->
-        <a href="index.html" class="navbar-brand"><img  src="img/template/logo.png" alt="logo"></a>
+        <a href="index1.html" class="navbar-brand"><img src="img/template/logo.png" alt="logo"></a>
 
         <div id="loading" class="pull-left"><i class="fa fa-certificate fa-spin"></i></div>
     </header>
@@ -130,45 +46,45 @@
         <aside id="page-sidebar">
             <nav id="primary-nav">
                 <ul>
-                            <li>
-                                <a href="../index.html">Головна </a>
-                            </li>
-                            <li>
-                                <a href="../titulka.html">Титулка</a>
-                            </li>
-                            <li>
-                                <a href="../buyer.html">Покупці</a>
-                            </li>
-                            <li>
-                                <a href="../goods.html">Товари</a>
-                            </li>
-                            <li>
-                                <a href="../goods_of_trading_point.html">Товари торгівельних точок</a>
-                            </li>
-                            <li>
-                                <a href="../provider.html">Постачальники</a>
-                            </li>
-                            <li>
-                                <a href="../request.html">Заявки</a>
-                            </li>
-                            <li>
-                                <a href="../section.html"></i>Секції</a>
-                            </li>
-                            <li>
-                                <a href="../section_of_trading_point.html">Секції торгівельних точок</a>
-                            </li>
-                            <li>
-                                <a href="../seller.html">Продавці</a>
-                            </li>
-                            <li>
-                                <a href="../sold_goods.html">Продані товари</a>
-                            </li>
-                            <li>
-                                <a href="../trading_point.html">Торгівельні точки</a>
-                            </li>
-                            <li>
-                                <a href="../type_of_trading_point.html">Типи торгівельних точок</a>
-                            </li>
+                    <li>
+                        <a href="../index1.html">Головна </a>
+                    </li>
+                    <li>
+                        <a href="../index.html">Титулка</a>
+                    </li>
+                    <li>
+                        <a href="../buyer.html">Покупці</a>
+                    </li>
+                    <li>
+                        <a href="../goods.html">Товари</a>
+                    </li>
+                    <li>
+                        <a href="../goods_of_trading_point.html">Товари торгівельних точок</a>
+                    </li>
+                    <li>
+                        <a href="../provider.html">Постачальники</a>
+                    </li>
+                    <li>
+                        <a href="../request.html">Заявки</a>
+                    </li>
+                    <li>
+                        <a href="../section.html"></i>Секції</a>
+                    </li>
+                    <li>
+                        <a href="../section_of_trading_point.html">Секції торгівельних точок</a>
+                    </li>
+                    <li>
+                        <a href="../seller.html">Продавці</a>
+                    </li>
+                    <li>
+                        <a href="../sold_goods.html">Продані товари</a>
+                    </li>
+                    <li>
+                        <a href="../trading_point.html">Торгівельні точки</a>
+                    </li>
+                    <li>
+                        <a href="../type_of_trading_point.html">Типи торгівельних точок</a>
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -178,226 +94,169 @@
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h2> <b>Інформаційна система торгівельної організації</b> </h2>
-                                </div>
-                                <hr>
-                            </div>
+                            <head>
+                                <meta charset="UTF-8">
+                                <title>Титульна сторінка</title>
+                            </head>
+                            <body>
+                            <h4 style="text-align: center; font-weight: bold; font-size: 14px;">
+                                Міністерство освіти і науки України<br>
+                                Чернівецький національний університет імені Юрія Федьковича<br>
+                            </h4>
 
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3><a href="inquiries/inquiries_1.html"><b>Запит #1  </b> </a> Одержати перелік постачальників, що поставляють зазначений вид товару, або деякий товар в обсязі за зазначений період.</h3>
-                                </div>
-                                <hr>
-                            </div>
+                            <p align="center"  style="text-decoration: underline; margin-bottom: -27px; font-size: 14px" >
+                                &emsp;&emsp;Програмного забезпечення комп’ютерних систем&emsp;&emsp;
+                            </p>
 
+                            <h6 align="center" style="font-weight: normal; font-size: 10px"><br>
+                            </h6>
 
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_2.html"><b>Запит #2  </b> </a> Одержати перелік покупців, що купили зазначений вид товару і зробили покупку товару в обсязі, не менш заданого. </h3>
-                                </div>
-                                <hr>
-                            </div>
+                            <h2 align="center"> КУРСОВИЙ ПРОЕКТ</h2>
 
+                            <p align="center"  style="text-decoration: underline; margin-bottom: -27px; font-size: 14px" >
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            </p>
 
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_3.html"><b>Запит #3  </b> </a> Одержати номенклатуру й обсяг товарів у зазначеній торговельній точці. </h3>
-                                </div>
-                                <hr>
-                            </div>
+                            <h6 align="center" style="font-weight: normal; font-size: 10px">
+                            </h6>
 
+                            <p align="center"  style=" font-size: 14px" >
+                                на тему: <span style="text-decoration: underline; font-weight: bold">
+        &emsp;Інформаційна система торгівельної організації&emsp;</span>
+                                <br><br>
+                            </p>
+                            <p align="center" style=" font-size: 12px;margin-left:200px; margin-bottom: -15px">
+                                Виконав: студент (ка)
+                                <span style="text-decoration: underline">&emsp;2&emsp;</span>
+                                курсу, групи
+                                <span style="text-decoration: underline">&emsp;243&emsp;</span><br>
+                                спеціальності
+                                <span style="text-decoration: underline">&ensp;&emsp;&emsp;6.121&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span><br>
 
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3>  <a href="inquiries/inquiries_4.html"><b>Запит #4  </b> </a> Одержати відомості про обсяг і ціни на зазначений товар по торговельних точках заданого типу. </h3>
-                                </div>
-                                <hr>
-                            </div>
+                            </p>
+                            <p align="center" style=" font-size: 12px;margin-left:200px;margin-bottom: -15px">
+                                <span style="text-decoration: underline;font-size: 10px"></span><br>
+                                <span style="text-decoration: underline">
+            &ensp;&emsp;&emsp;Інженерія програмного забезпечення&emsp;&emsp;&emsp;</span><br>
+                            </p>
+                            <p align="center" style=" font-size: 12px;margin-left:200px;margin-bottom: -15px">
+                                <span style="text-decoration: underline;font-size: 10px">)</span><br>
+                                <span style="text-decoration: underline">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;</span>
+                                &emsp;&emsp;
+                                <span style="text-decoration: underline">&emsp;&emsp;&emsp;Піцул Д.М.&emsp;&emsp;&emsp;</span><br>
+                            </p>
+                            <p align="center" style=" font-size: 12px;margin-left:200px;margin-bottom: -15px">
+                                <span style="text-decoration: underline;font-size: 10px">(підпис)</span>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                <span style="text-decoration: underline; font-size: 10px"></span><br>
+                                Керівник&emsp;&emsp;&emsp;&emsp;&emsp;
+                                <span style="text-decoration: underline">&emsp;&emsp;&emsp; Прохоров Г. В.&emsp;&emsp;&emsp;</span><br>
+                            </p>
+                            <p align="center" style=" font-size: 12px;margin-left:200px;margin-bottom: -15px">
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                <span style="text-decoration: underline; font-size: 10px"></span><br>
+                                Нормоконтролер&emsp;
+                                <span style="text-decoration: underline">&emsp;&emsp;&emsp; Комісарчук В.В.&emsp;&emsp;&emsp;</span><br>
+                            </p>
+                            <p align="center" style=" font-size: 12px;margin-left:200px;margin-bottom: -15px">
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                <span style="text-decoration: underline; font-size: 10px"></span><br>
+                            </p><br><br>
 
+                            <table align = "center">
+                                <tr style = "font-size: 12px">
+                                    <td>
+                                        <span style="font-weight: bold;">До захисту допущено:</span><br>
+                                        від «_____»______________ 20____р.<br>
+                                        Керівник&emsp;&emsp;&emsp;__________________<br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(підпис)&emsp;&emsp;<br>
+                                        Нормоконтролер  _________________<br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(підпис)&emsp;&emsp;<br>
+                                        <br><br>
+                                    </td>
+                                    <td>
+                                        &emsp;<span style="font-weight: bold;">Дата захисту</span> «______»_____________ 20____р.<br>
+                                        &emsp;<span style="font-weight: bold;">Оцінка:</span><br>
+                                        &emsp;за національною шкалою ___________________<br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(словами)<br>
+                                        &emsp;кількість балів&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;___________________<br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(цифра)<br>
+                                        &emsp;за шкалою ECTS&emsp;&emsp;&emsp;&ensp;&nbsp;___________________<br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(літера)<br>
+                                    </td>
+                                </tr>
+                            </table>
 
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3>  <a href="inquiries/inquiries_5.html"><b>Запит #5  </b> </a> Одержати відомості про обсяг і ціни на зазначений товар по всіх торговельних точках. </h3>
-                                </div>
-                                <hr>
-                            </div>
+                            <br>
+                            <p align = "center" style="font-size: 12px">Чернівці–20
+                                <span style="text-decoration: underline">18</span></p>
+                            </body>
 
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_6.html"><b>Запит #6  </b> </a> Одержати дані про виробіток на одного продавця за зазначений період по всіх торговельних точках. </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_7.html"><b>Запит #7  </b> </a> Одержати дані про виробіток на одного продавця за зазначений період по торговельних точках заданого типу. </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_8.html"><b>Запит #8  </b> </a> Одержати дані про виробіток окремо взятого продавця, окремо взятої торговельної точки за зазначений період.</h3>
-                                </div>
-                                <hr>
-                            </div>
-
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_9.html"><b>Запит #9  </b> </a>	Одержати дані про обсяг продажів зазначеного товару за деякий період по конкретній торговельній точці.</h3>
-                                </div>
-                                <hr>
-                            </div>
-
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_10.html"><b>Запит #10  </b> </a> Одержати дані про обсяг продажів зазначеного товару за деякий період по всіх торговельних точках.</h3>
-                                </div>
-                                <hr>
-                            </div>
-
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_11.html"><b>Запит #11  </b> </a> 	Одержати дані про заробітну плату продавців по торговельних точках заданого типу. </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_12.html"><b>Запит #12  </b> </a> Одержати дані про заробітну плату продавців по всіх торговельних точках. </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_13.html"><b>Запит #13  </b> </a> Одержати відомості про поставки певного товару зазначеним постачальником за увесь час поставок. </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_14.html"><b>Запит #14  </b> </a> Одержати дані про відношення кількості продажів до числа прилавків по конкретній торгівельніфй точці. </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_15.html"><b>Запит #15  </b> </a>	Одержати дані про рентабельність торговельної точки: співвідношення обсягу продажів до накладних витрат (сумарна заробітна плата продавців + платежі за оренду + комунальні послуги). </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_16.html"><b>Запит #16  </b> </a> 	Одержати відомості про поставки товарів по зазначеному номеру замовлення. </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_17.html"><b>Запит #17  </b> </a>  Одержати відомості про покупців зазначеного товару за вказаний період по торговельних точках зазначеного типу. </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_18.html"><b>Запит #18  </b> </a> Одержати відомості про покупців зазначеного товару за вказаний період по всіх торговельних точках. </h3>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_19.html"><b>Запит #19  </b> </a> Вивести по спаданню найбільш активних покупців по всіх торгівельних точках.</h3>
-                                </div>
-                                <hr>
-                            </div>
-
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="card-box">
-                                    <h3> <a href="inquiries/inquiries_20.html"><b>Запит #20  </b> </a> Вивести по спаданню найбільш активних покупців по торгівельній точці заданого типу</h3>
-                                </div>
-                            </div>
-
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
+        <a href="javascript:void(0)" id="to-top"><i class="fa fa-chevron-up"></i></a>
 
-    <a href="javascript:void(0)" id="to-top"><i class="fa fa-chevron-up"></i></a>
-
-    <div id="modal-user-settings" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4>Profile Settings</h4>
-                </div>
-                <div class="modal-body">
-                    <ul id="example-user-tabs" class="nav nav-tabs" data-toggle="tabs">
-                        <li class="active"><a href="#example-user-tabs-account"><i class="fa fa-cogs"></i> Account</a></li>
-                        <li><a href="#example-user-tabs-profile"><i class="fa fa-user"></i> Profile</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="example-user-tabs-account">
-                            <div class="alert alert-success">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Success!</strong> Password changed!
+        <div id="modal-user-settings" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4>Profile Settings</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="example-user-tabs" class="nav nav-tabs" data-toggle="tabs">
+                            <li class="active"><a href="#example-user-tabs-account"><i class="fa fa-cogs"></i> Account</a></li>
+                            <li><a href="#example-user-tabs-profile"><i class="fa fa-user"></i> Profile</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="example-user-tabs-account">
+                                <div class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Success!</strong> Password changed!
+                                </div>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Username</label>
+                                        <div class="col-md-9">
+                                            <p class="form-control-static">administrator</p>
+                                            <span class="help-block">You can't change your username!</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="example-user-pass">Password</label>
+                                        <div class="col-md-9">
+                                            <input type="password" id="example-user-pass" name="example-user-pass" class="form-control">
+                                            <span class="help-block">if you want to change your password enter your current for confirmation!</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="example-user-newpass">New Password</label>
+                                        <div class="col-md-9">
+                                            <input type="password" id="example-user-newpass" name="example-user-newpass" class="form-control">
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">Username</label>
-                                    <div class="col-md-9">
-                                        <p class="form-control-static">administrator</p>
-                                        <span class="help-block">You can't change your username!</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3" for="example-user-pass">Password</label>
-                                    <div class="col-md-9">
-                                        <input type="password" id="example-user-pass" name="example-user-pass" class="form-control">
-                                        <span class="help-block">if you want to change your password enter your current for confirmation!</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3" for="example-user-newpass">New Password</label>
-                                    <div class="col-md-9">
-                                        <input type="password" id="example-user-newpass" name="example-user-newpass" class="form-control">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane" id="example-user-tabs-profile">
-                            <h4 class="page-header-sub">Image</h4>
-                            <div class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="col-md-3">
-                                        <img src="img/placeholders/image_dark_120x120.png" alt="image" class="img-responsive push">
-                                    </div>
-                                    <div class="col-md-9">
-                                        <form action="index.html" class="dropzone">
-                                            <div class="fallback">
-                                                <input name="file" type="file">
-                                            </div>
-                                        </form>
+                            <div class="tab-pane" id="example-user-tabs-profile">
+                                <h4 class="page-header-sub">Image</h4>
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-md-3">
+                                            <img src="img/placeholders/image_dark_120x120.png" alt="image" class="img-responsive push">
+                                        </div>
+                                        <div class="col-md-9">
+                                            <form action="index1.html" class="dropzone">
+                                                <div class="fallback">
+                                                    <input name="file" type="file">
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -406,25 +265,24 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
 
-    <script src="../js/helpers/excanvas.min.js"></script><![endif]-->
+        <script src="../js/helpers/excanvas.min.js"></script><![endif]-->
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script>!window.jQuery && document.write(decodeURI('%3Cscript src="js/vendor/jquery-1.11.1.min.js"%3E%3C/script%3E'));</script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>!window.jQuery && document.write(decodeURI('%3Cscript src="js/vendor/jquery-1.11.1.min.js"%3E%3C/script%3E'));</script>
 
-    <script src="../js/vendor/bootstrap.min.js"></script>
+        <script src="../js/vendor/bootstrap.min.js"></script>
 
-    <script src="../js/plugins.js"></script>
-    <script src="../js/main.js"></script>
+        <script src="../js/plugins.js"></script>
+        <script src="../js/main.js"></script>
 
-    <!--<script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/provider.js"></script>-->
+        <!--<script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/provider.js"></script>-->
 
 </body>
 </html>
